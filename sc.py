@@ -63,6 +63,12 @@ def parse_env():
             "TABPFN_MODEL_CACHE_DIR",
             str(Path(__file__).resolve().parent.parent / "tabpfn_ckpt"),
         ),
+        # 样本级幅值归一化开关；默认开启
+        "sample_level_norm": os.environ.get("SAMPLE_LEVEL_NORM", "1") == "1",
+        # 可选剔除样本列表（逗号分隔 Sample_ID），默认空
+        "exclude_sample_ids": [
+            s for s in os.environ.get("EXCLUDE_SAMPLE_IDS", "").split(",") if s.strip()
+        ],
     }
     os.environ.setdefault("TABPFN_MODEL_CACHE_DIR", cfg["model_cache_dir"])
     os.environ.setdefault("HF_HUB_OFFLINE", "1")
@@ -99,6 +105,20 @@ def get_metrics(y_true, y_pred):
         "mae": float(mean_absolute_error(y_true, y_pred)),
         "pearson": float(np.corrcoef(y_true, y_pred)[0, 1]) if len(y_true) > 1 else 0.0
     }
+
+
+def sample_level_normalize(df, band_cols, static_cols):
+    """按样本对光谱/静态荧光做幅值归一化（z-score per sample）"""
+    X = df.copy()
+    # 光谱
+    mean_band = X[band_cols].mean(axis=1)
+    std_band = X[band_cols].std(axis=1) + 1e-9
+    X[band_cols] = X[band_cols].sub(mean_band, axis=0).div(std_band, axis=0)
+    # 静态荧光
+    mean_static = X[static_cols].mean(axis=1)
+    std_static = X[static_cols].std(axis=1) + 1e-9
+    X[static_cols] = X[static_cols].sub(mean_static, axis=0).div(std_static, axis=0)
+    return X
 
 
 def train_eval_fold(X_train, y_train, X_test, y_test, cfg, infer_precision, device):
