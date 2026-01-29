@@ -1,0 +1,10 @@
+n=13
+sum_d2=4.0
+spearman_from_ranks=0.989011
+
+Top abs errors:
+Variety 1235: true=0.1731, pred=0.2431, abs_err=0.0700, rank_true=13, rank_pred=12
+Variety 1099: true=0.5283, pred=0.4770, abs_err=0.0513, rank_true=3, rank_pred=3
+Variety 1257: true=0.5317, pred=0.4824, abs_err=0.0493, rank_true=2, rank_pred=2
+Variety 1110: true=0.2232, pred=0.2569, abs_err=0.0337, rank_true=11, rank_pred=10
+Variety 1218: true=0.2062, pred=0.2371, abs_err=0.0309, rank_true=12, rank_pred=13

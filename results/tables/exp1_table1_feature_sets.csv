@@ -1,0 +1,5 @@
+Feature_Set,Description,N_Features,Features
+FS1,Multi-only (Multi原始波段 + 植被指数 + Treatment),22,"R460, R520, R580, R660, R710... (22 total)"
+FS2,Static-only (Static原始波段 + Static比值 + Treatment),13,"BF(F440), GF(F520), RF(F690), FrF(f740), SR_F690_F740... (13 total)"
+FS3,双源融合 (Multi + Static + Treatment，不含OJIP),32,"R460, R520, R580, R660, R710... (32 total)"
+FS4,三源融合 (Multi + Static + OJIP + Treatment),40,"R460, R520, R580, R660, R710... (40 total)"

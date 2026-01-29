@@ -1,0 +1,5 @@
+Comparison,Description,Delta_R2,Delta_Spearman,Delta_Pairwise,Delta_Hit3
+FS3 vs FS1,Dual-source vs Multi-only,+0.1626,+0.0989,+0.1026,+0.0000
+FS3 vs FS2,Dual-source vs Static-only,-0.1054,+0.0000,+0.0128,+0.3333
+FS4 vs FS3,Tri-source vs Dual-source (OJIP contribution),+0.0904,+0.0220,+0.0256,+0.0000
+FS4 vs FS1,Tri-source vs Multi-only (Total gain),+0.2529,+0.1209,+0.1282,+0.0000
