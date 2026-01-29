@@ -479,6 +479,28 @@ def main():
     df, feature_sets = load_data()
     feature_cols = feature_sets["FS4"]["features"]
 
+    # —— 样本级幅值归一化与样本筛除 ——
+    # 1) 推断光谱/静态荧光列
+    band_cols = [c for c in feature_cols if c.startswith("R")]
+    static_cols = [c for c in feature_cols if c in ["BF(F440)", "GF(F520)", "RF(F690)", "FrF(f740)"]]
+
+    # 2) 可选剔除指定样本
+    if cfg["exclude_sample_ids"]:
+        before = len(df)
+        df = df[~df["Sample_ID"].astype(str).isin(cfg["exclude_sample_ids"])].reset_index(drop=True)
+        removed = before - len(df)
+        print(f"  已剔除样本 {cfg['exclude_sample_ids']}，共移除 {removed} 条")
+
+    # 3) 样本级幅值归一化（光谱+静态荧光）
+    if cfg["sample_level_norm"]:
+        if band_cols or static_cols:
+            cols_to_norm = band_cols + static_cols
+            print(f"  执行样本级幅值归一化，列数: {len(cols_to_norm)}")
+            df_norm = sample_level_normalize(df[cols_to_norm], band_cols, static_cols)
+            df.loc[:, cols_to_norm] = df_norm[cols_to_norm]
+        else:
+            print("  [WARN] 未找到需归一化的光谱列，跳过样本级归一化")
+
     X = df[feature_cols].values
     y = df["D_conv"].values
     varieties = df["Variety"].values
