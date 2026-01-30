@@ -1,0 +1,107 @@
+{
+  "baseline": {
+    "name": "无增强（基线）",
+    "n_samples": 117,
+    "n_per_variety": 9.0,
+    "metrics": {
+      "R2": 0.7461,
+      "RMSE": 0.0663,
+      "Spearman": 0.8077
+    },
+    "hard_variety_errors": {
+      "1252": 0.1071,
+      "1235": 0.1156,
+      "1099": 0.1033
+    }
+  },
+  "traj_basic": {
+    "name": "轨迹插值(3点)",
+    "n_samples": 195,
+    "n_per_variety": 15.0,
+    "metrics": {
+      "R2": 0.8157,
+      "RMSE": 0.0565,
+      "Spearman": 0.8846
+    },
+    "hard_variety_errors": {
+      "1252": 0.0924,
+      "1235": 0.1011,
+      "1099": 0.0695
+    }
+  },
+  "traj_dense": {
+    "name": "轨迹插值(9点)",
+    "n_samples": 351,
+    "n_per_variety": 27.0,
+    "metrics": {
+      "R2": 0.8473,
+      "RMSE": 0.0514,
+      "Spearman": 0.9341
+    },
+    "hard_variety_errors": {
+      "1252": 0.0801,
+      "1235": 0.0744,
+      "1099": 0.0893
+    }
+  },
+  "traj_full": {
+    "name": "轨迹插值+跨处理",
+    "n_samples": 234,
+    "n_per_variety": 18.0,
+    "metrics": {
+      "R2": 0.8165,
+      "RMSE": 0.0564,
+      "Spearman": 0.9066
+    },
+    "hard_variety_errors": {
+      "1252": 0.0794,
+      "1235": 0.0908,
+      "1099": 0.0762
+    }
+  },
+  "mixup": {
+    "name": "Mixup",
+    "n_samples": 234,
+    "n_per_variety": 18.0,
+    "metrics": {
+      "R2": 0.79,
+      "RMSE": 0.0603,
+      "Spearman": 0.8956
+    },
+    "hard_variety_errors": {
+      "1252": 0.1078,
+      "1235": 0.0799,
+      "1099": 0.1163
+    }
+  },
+  "mixup_traj": {
+    "name": "Mixup→轨迹",
+    "n_samples": 312,
+    "n_per_variety": 24.0,
+    "metrics": {
+      "R2": 0.814,
+      "RMSE": 0.0568,
+      "Spearman": 0.8736
+    },
+    "hard_variety_errors": {
+      "1252": 0.0892,
+      "1235": 0.0883,
+      "1099": 0.0942
+    }
+  },
+  "traj_mixup": {
+    "name": "轨迹→Mixup",
+    "n_samples": 390,
+    "n_per_variety": 30.0,
+    "metrics": {
+      "R2": 0.829,
+      "RMSE": 0.0544,
+      "Spearman": 0.9341
+    },
+    "hard_variety_errors": {
+      "1252": 0.0916,
+      "1235": 0.0708,
+      "1099": 0.0992
+    }
+  }
+}
