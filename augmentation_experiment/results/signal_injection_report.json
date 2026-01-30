@@ -1,0 +1,86 @@
+{
+  "experiments": [
+    {
+      "experiment": "1. 基线（无注入）",
+      "shrink": null,
+      "scale": null,
+      "R2": 0.7462,
+      "RMSE": 0.0663,
+      "Spearman": 0.8242,
+      "physical_consistency": 13
+    },
+    {
+      "experiment": "2. 压缩变异 shrink=0.3",
+      "shrink": 0.3,
+      "scale": null,
+      "R2": 0.8734,
+      "RMSE": 0.0468,
+      "Spearman": 0.9176,
+      "physical_consistency": 13
+    },
+    {
+      "experiment": "3. 压缩变异 shrink=0.5",
+      "shrink": 0.5,
+      "scale": null,
+      "R2": 0.8648,
+      "RMSE": 0.0484,
+      "Spearman": 0.9231,
+      "physical_consistency": 13
+    },
+    {
+      "experiment": "4. 压缩变异 shrink=0.7",
+      "shrink": 0.7,
+      "scale": null,
+      "R2": 0.8444,
+      "RMSE": 0.0519,
+      "Spearman": 0.9121,
+      "physical_consistency": 13
+    },
+    {
+      "experiment": "5. 放大差异 scale=0.1",
+      "shrink": null,
+      "scale": 0.1,
+      "R2": 0.9779,
+      "RMSE": 0.0196,
+      "Spearman": 0.9615,
+      "physical_consistency": 13
+    },
+    {
+      "experiment": "6. 放大差异 scale=0.2",
+      "shrink": null,
+      "scale": 0.2,
+      "R2": 0.9791,
+      "RMSE": 0.019,
+      "Spearman": 0.9725,
+      "physical_consistency": 13
+    },
+    {
+      "experiment": "7. 组合 shrink=0.5+scale=0.1",
+      "shrink": 0.5,
+      "scale": 0.1,
+      "R2": 0.9736,
+      "RMSE": 0.0214,
+      "Spearman": 0.9505,
+      "physical_consistency": 13
+    },
+    {
+      "experiment": "8. 组合 shrink=0.5+scale=0.2",
+      "shrink": 0.5,
+      "scale": 0.2,
+      "R2": 0.9795,
+      "RMSE": 0.0188,
+      "Spearman": 0.967,
+      "physical_consistency": 13
+    }
+  ],
+  "best_spearman": {
+    "experiment": "6. 放大差异 scale=0.2",
+    "Spearman": 0.9725,
+    "R2": 0.9791
+  },
+  "best_r2": {
+    "experiment": "8. 组合 shrink=0.5+scale=0.2",
+    "R2": 0.9795,
+    "Spearman": 0.967
+  }
+}
