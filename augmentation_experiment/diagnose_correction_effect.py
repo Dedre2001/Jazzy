@@ -37,7 +37,7 @@ MAIN_DATA_DIR = BASE_DIR.parent / "groupkfold_experiment" / "data"
 def prepare_corrected_data():
     """准备修正后的完整数据集"""
     df_orig = pd.read_csv(MAIN_DATA_DIR / "features_enhanced.csv")
-    df_corr_raw = pd.read_csv(DATA_DIR / "recorrected.csv")
+    df_corr_raw = pd.read_csv(DATA_DIR / "rerecorrected.csv")
     corrected_varieties = [1099, 1235, 1252]
 
     df_other = df_orig[~df_orig['Variety'].isin(corrected_varieties)].copy()

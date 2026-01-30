@@ -116,7 +116,7 @@ def prepare_recorrected_data():
     print("=" * 70)
 
     # 1. 加载修正后的光谱数据 (1099, 1235, 1252)
-    df_corrected = pd.read_csv(DATA_DIR / "recorrected.csv")
+    df_corrected = pd.read_csv(DATA_DIR / "rerecorrected.csv")
     corrected_varieties = df_corrected['Variety'].unique()
     print(f"\n修正的品种: {list(corrected_varieties)}")
     print(f"修正样本数: {len(df_corrected)}")
