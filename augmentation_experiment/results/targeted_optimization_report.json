@@ -1,0 +1,34 @@
+{
+  "results": [
+    {
+      "config": "基线 (无注入)",
+      "R2": 0.7462,
+      "Spearman": 0.8242,
+      "matched_ranks": 3
+    },
+    {
+      "config": "Scale=0.1",
+      "R2": 0.9779,
+      "Spearman": 0.9615,
+      "matched_ranks": 8
+    },
+    {
+      "config": "Scale=0.2",
+      "R2": 0.9791,
+      "Spearman": 0.9725,
+      "matched_ranks": 9
+    },
+    {
+      "config": "Scale=0.1 + 针对性优化",
+      "R2": 0.9177,
+      "Spearman": 0.956,
+      "matched_ranks": 3
+    },
+    {
+      "config": "Scale=0.2 + 针对性优化",
+      "R2": 0.9478,
+      "Spearman": 0.978,
+      "matched_ranks": 5
+    }
+  ]
+}
