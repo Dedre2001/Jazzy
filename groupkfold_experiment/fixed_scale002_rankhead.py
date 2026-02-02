@@ -280,25 +280,29 @@ def main():
     print(f"  R²={m['R2']:.4f}, Spearman={m['Spearman']:.4f}, 匹配={m['matched_ranks']}/13")
     results.append({'method': 'TabPFN (基线)', **m})
 
-    # 配置列表
+    # 配置列表 - 目标Spearman=1.0
     configs = [
-        # 高MSE权重 - 保护R²
-        {'name': 'Residual mse=0.7', 'head_type': 'residual', 'hidden_dim': 16, 'lr': 0.01, 'epochs': 100, 'mse_w': 0.7, 'pair_w': 0.15, 'spear_w': 0.15},
-        {'name': 'Residual mse=0.6', 'head_type': 'residual', 'hidden_dim': 16, 'lr': 0.01, 'epochs': 150, 'mse_w': 0.6, 'pair_w': 0.2, 'spear_w': 0.2},
-        {'name': 'Residual mse=0.5', 'head_type': 'residual', 'hidden_dim': 16, 'lr': 0.01, 'epochs': 150, 'mse_w': 0.5, 'pair_w': 0.25, 'spear_w': 0.25},
+        # ========== 高Spearman权重配置 ==========
+        {'name': 'Residual spear=0.5', 'head_type': 'residual', 'hidden_dim': 32, 'lr': 0.01, 'epochs': 300, 'mse_w': 0.2, 'pair_w': 0.3, 'spear_w': 0.5},
+        {'name': 'Residual spear=0.6', 'head_type': 'residual', 'hidden_dim': 32, 'lr': 0.01, 'epochs': 400, 'mse_w': 0.1, 'pair_w': 0.3, 'spear_w': 0.6},
+        {'name': 'Residual spear=0.7', 'head_type': 'residual', 'hidden_dim': 64, 'lr': 0.005, 'epochs': 500, 'mse_w': 0.1, 'pair_w': 0.2, 'spear_w': 0.7},
+        {'name': 'Residual spear=0.8', 'head_type': 'residual', 'hidden_dim': 64, 'lr': 0.005, 'epochs': 600, 'mse_w': 0.0, 'pair_w': 0.2, 'spear_w': 0.8},
 
-        # Light head
-        {'name': 'Light mse=0.7', 'head_type': 'light', 'hidden_dim': 8, 'lr': 0.01, 'epochs': 100, 'mse_w': 0.7, 'pair_w': 0.15, 'spear_w': 0.15},
-        {'name': 'Light mse=0.6', 'head_type': 'light', 'hidden_dim': 8, 'lr': 0.01, 'epochs': 150, 'mse_w': 0.6, 'pair_w': 0.2, 'spear_w': 0.2},
-        {'name': 'Light mse=0.5', 'head_type': 'light', 'hidden_dim': 16, 'lr': 0.01, 'epochs': 150, 'mse_w': 0.5, 'pair_w': 0.25, 'spear_w': 0.25},
+        # ========== 纯排序优化 ==========
+        {'name': 'Residual pure_rank', 'head_type': 'residual', 'hidden_dim': 64, 'lr': 0.003, 'epochs': 800, 'mse_w': 0.0, 'pair_w': 0.1, 'spear_w': 0.9},
 
-        # ScaleShift (最简单)
-        {'name': 'ScaleShift mse=0.7', 'head_type': 'scale_shift', 'hidden_dim': 0, 'lr': 0.02, 'epochs': 100, 'mse_w': 0.7, 'pair_w': 0.15, 'spear_w': 0.15},
-        {'name': 'ScaleShift mse=0.5', 'head_type': 'scale_shift', 'hidden_dim': 0, 'lr': 0.02, 'epochs': 150, 'mse_w': 0.5, 'pair_w': 0.25, 'spear_w': 0.25},
+        # ========== Light head 高排序权重 ==========
+        {'name': 'Light spear=0.5', 'head_type': 'light', 'hidden_dim': 32, 'lr': 0.01, 'epochs': 300, 'mse_w': 0.2, 'pair_w': 0.3, 'spear_w': 0.5},
+        {'name': 'Light spear=0.7', 'head_type': 'light', 'hidden_dim': 64, 'lr': 0.005, 'epochs': 500, 'mse_w': 0.1, 'pair_w': 0.2, 'spear_w': 0.7},
+        {'name': 'Light pure_rank', 'head_type': 'light', 'hidden_dim': 64, 'lr': 0.003, 'epochs': 800, 'mse_w': 0.0, 'pair_w': 0.1, 'spear_w': 0.9},
 
-        # 更多epochs
-        {'name': 'Residual 300ep', 'head_type': 'residual', 'hidden_dim': 16, 'lr': 0.005, 'epochs': 300, 'mse_w': 0.5, 'pair_w': 0.25, 'spear_w': 0.25},
-        {'name': 'Light 300ep', 'head_type': 'light', 'hidden_dim': 16, 'lr': 0.005, 'epochs': 300, 'mse_w': 0.5, 'pair_w': 0.25, 'spear_w': 0.25},
+        # ========== 超长训练 ==========
+        {'name': 'Residual 1000ep', 'head_type': 'residual', 'hidden_dim': 64, 'lr': 0.002, 'epochs': 1000, 'mse_w': 0.05, 'pair_w': 0.25, 'spear_w': 0.7},
+        {'name': 'Light 1000ep', 'head_type': 'light', 'hidden_dim': 64, 'lr': 0.002, 'epochs': 1000, 'mse_w': 0.05, 'pair_w': 0.25, 'spear_w': 0.7},
+
+        # ========== 高pairwise权重 ==========
+        {'name': 'Residual pair=0.5', 'head_type': 'residual', 'hidden_dim': 32, 'lr': 0.01, 'epochs': 500, 'mse_w': 0.1, 'pair_w': 0.5, 'spear_w': 0.4},
+        {'name': 'Light pair=0.5', 'head_type': 'light', 'hidden_dim': 32, 'lr': 0.01, 'epochs': 500, 'mse_w': 0.1, 'pair_w': 0.5, 'spear_w': 0.4},
     ]
 
     print("\n测试不同配置...")
