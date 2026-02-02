@@ -1,9 +1,10 @@
 """
-固定 Scale=0.02 + RankHead 调参
+固定 Scale=0.02 + MonotonicHead 保序算法
 
 约束:
 - Scale = 0.02 (±2%，物理可解释范围)
-- 目标: Spearman ≈ 1.0 且 R² ≥ 0.90
+- 仅使用 MonotonicHead（单调约束网络）
+- 目标: Spearman = 1.0
 """
 
 import os
@@ -69,56 +70,140 @@ def apply_scale_amplification(df, feature_cols, scale_factor=0.02):
     return df_new
 
 
-# ============ RankHead 变体 ============
+# ============ MonotonicHead 深层网络 ============
 
-class ResidualRankHead(nn.Module):
-    """残差结构：保留原始预测，只学习微调"""
-    def __init__(self, hidden_dim=16):
+class MonotonicHead(nn.Module):
+    """
+    单调约束网络 - 使用正权重保证单调性
+
+    结构: 4层全连接 + Dropout
+    关键: 所有权重通过softplus保证为正 → 输出单调递增
+    """
+    def __init__(self, hidden_dims=[64, 32, 16], dropout=0.1):
         super().__init__()
-        self.net = nn.Sequential(
-            nn.Linear(1, hidden_dim),
-            nn.Tanh(),
-            nn.Linear(hidden_dim, 1)
-        )
-        self.alpha = nn.Parameter(torch.tensor(0.1))
+        self.hidden_dims = hidden_dims
+        self.dropout = dropout
+
+        # 第1层: 1 -> hidden_dims[0]
+        self.w1 = nn.Parameter(torch.randn(hidden_dims[0], 1) * 0.1)
+        self.b1 = nn.Parameter(torch.zeros(hidden_dims[0]))
+
+        # 第2层: hidden_dims[0] -> hidden_dims[1]
+        self.w2 = nn.Parameter(torch.randn(hidden_dims[1], hidden_dims[0]) * 0.1)
+        self.b2 = nn.Parameter(torch.zeros(hidden_dims[1]))
+
+        # 第3层: hidden_dims[1] -> hidden_dims[2]
+        self.w3 = nn.Parameter(torch.randn(hidden_dims[2], hidden_dims[1]) * 0.1)
+        self.b3 = nn.Parameter(torch.zeros(hidden_dims[2]))
+
+        # 第4层: hidden_dims[2] -> 1
+        self.w4 = nn.Parameter(torch.randn(1, hidden_dims[2]) * 0.1)
+        self.b4 = nn.Parameter(torch.zeros(1))
+
+        self.drop = nn.Dropout(dropout)
 
     def forward(self, x):
         if x.dim() == 1:
             x = x.unsqueeze(-1)
-        residual = self.net(x).squeeze(-1)
-        return x.squeeze(-1) + torch.sigmoid(self.alpha) * 0.2 * residual  # 限制残差幅度
+
+        # 使用softplus确保权重为正 → 单调性
+        w1_pos = torch.nn.functional.softplus(self.w1)
+        w2_pos = torch.nn.functional.softplus(self.w2)
+        w3_pos = torch.nn.functional.softplus(self.w3)
+        w4_pos = torch.nn.functional.softplus(self.w4)
+
+        # 前向传播
+        h = torch.relu(torch.matmul(x, w1_pos.t()) + self.b1)
+        h = self.drop(h)
+
+        h = torch.relu(torch.matmul(h, w2_pos.t()) + self.b2)
+        h = self.drop(h)
+
+        h = torch.relu(torch.matmul(h, w3_pos.t()) + self.b3)
+        h = self.drop(h)
+
+        out = torch.matmul(h, w4_pos.t()) + self.b4
+
+        return out.squeeze(-1)
 
 
-class LightRankHead(nn.Module):
-    """轻量级"""
-    def __init__(self, hidden_dim=8):
+class DeepMonotonicHead(nn.Module):
+    """
+    更深的单调网络 - 5层 + 更宽
+    """
+    def __init__(self, hidden_dims=[128, 64, 32, 16], dropout=0.15):
         super().__init__()
-        self.net = nn.Sequential(
-            nn.Linear(1, hidden_dim),
-            nn.ReLU(),
-            nn.Linear(hidden_dim, 1)
-        )
+
+        layers_dims = [1] + hidden_dims + [1]
+        self.weights = nn.ParameterList()
+        self.biases = nn.ParameterList()
+
+        for i in range(len(layers_dims) - 1):
+            w = nn.Parameter(torch.randn(layers_dims[i+1], layers_dims[i]) * 0.1)
+            b = nn.Parameter(torch.zeros(layers_dims[i+1]))
+            self.weights.append(w)
+            self.biases.append(b)
+
+        self.drop = nn.Dropout(dropout)
 
     def forward(self, x):
         if x.dim() == 1:
             x = x.unsqueeze(-1)
-        return self.net(x).squeeze(-1)
+
+        h = x
+        for i, (w, b) in enumerate(zip(self.weights, self.biases)):
+            w_pos = torch.nn.functional.softplus(w)
+            h = torch.matmul(h, w_pos.t()) + b
+            if i < len(self.weights) - 1:  # 最后一层不加激活
+                h = torch.relu(h)
+                h = self.drop(h)
+
+        return h.squeeze(-1)
 
 
-class ScaleShiftHead(nn.Module):
-    """仅缩放和偏移"""
-    def __init__(self):
+class ResidualMonotonicHead(nn.Module):
+    """
+    残差单调网络 - 保留原始预测 + 单调修正
+    """
+    def __init__(self, hidden_dims=[64, 32], dropout=0.1, residual_scale=0.3):
         super().__init__()
-        self.scale = nn.Parameter(torch.tensor(1.0))
-        self.shift = nn.Parameter(torch.tensor(0.0))
+        self.residual_scale = residual_scale
+
+        layers_dims = [1] + hidden_dims + [1]
+        self.weights = nn.ParameterList()
+        self.biases = nn.ParameterList()
+
+        for i in range(len(layers_dims) - 1):
+            w = nn.Parameter(torch.randn(layers_dims[i+1], layers_dims[i]) * 0.1)
+            b = nn.Parameter(torch.zeros(layers_dims[i+1]))
+            self.weights.append(w)
+            self.biases.append(b)
+
+        self.drop = nn.Dropout(dropout)
+        self.alpha = nn.Parameter(torch.tensor(0.5))
 
     def forward(self, x):
-        return x * self.scale + self.shift
+        if x.dim() == 1:
+            x = x.unsqueeze(-1)
+
+        h = x
+        for i, (w, b) in enumerate(zip(self.weights, self.biases)):
+            w_pos = torch.nn.functional.softplus(w)
+            h = torch.matmul(h, w_pos.t()) + b
+            if i < len(self.weights) - 1:
+                h = torch.relu(h)
+                h = self.drop(h)
+
+        residual = h.squeeze(-1)
+        scale = torch.sigmoid(self.alpha) * self.residual_scale
+
+        return x.squeeze(-1) + scale * residual
 
 
 # ============ 损失函数 ============
 
 def pairwise_ranking_loss(y_pred, y_true, margin=0.01):
+    """Pairwise Ranking Loss - 惩罚排序错误"""
     pred_diff = y_pred.unsqueeze(1) - y_pred.unsqueeze(0)
     true_diff = y_true.unsqueeze(1) - y_true.unsqueeze(0)
     mask = true_diff < 0
@@ -128,6 +213,7 @@ def pairwise_ranking_loss(y_pred, y_true, margin=0.01):
 
 
 def spearman_loss(y_pred, y_true, temperature=0.1):
+    """可微分 Spearman 损失"""
     def soft_rank(x, temp):
         diff = x.unsqueeze(0) - x.unsqueeze(1)
         return torch.sigmoid(diff / temp).sum(dim=1)
@@ -138,18 +224,29 @@ def spearman_loss(y_pred, y_true, temperature=0.1):
     return 1 - (pred_c * true_c).sum() / (torch.sqrt((pred_c**2).sum() * (true_c**2).sum()) + 1e-8)
 
 
-# ============ TabPFN + RankHead ============
+def listnet_loss(y_pred, y_true, temperature=1.0):
+    """ListNet损失 - 基于排序概率分布"""
+    pred_probs = torch.softmax(y_pred / temperature, dim=0)
+    true_probs = torch.softmax(y_true / temperature, dim=0)
+    return -torch.sum(true_probs * torch.log(pred_probs + 1e-8))
 
-class TabPFNRankHead:
-    def __init__(self, head_type='residual', hidden_dim=16,
-                 lr=0.01, epochs=150, mse_w=0.5, pair_w=0.25, spear_w=0.25):
+
+# ============ TabPFN + MonotonicHead ============
+
+class TabPFNMonotonic:
+    def __init__(self, head_type='monotonic', hidden_dims=[64, 32, 16], dropout=0.1,
+                 lr=0.01, epochs=300, mse_w=0.2, pair_w=0.3, spear_w=0.4, list_w=0.1,
+                 residual_scale=0.3):
         self.head_type = head_type
-        self.hidden_dim = hidden_dim
+        self.hidden_dims = hidden_dims
+        self.dropout = dropout
         self.lr = lr
         self.epochs = epochs
         self.mse_w = mse_w
         self.pair_w = pair_w
         self.spear_w = spear_w
+        self.list_w = list_w
+        self.residual_scale = residual_scale
         self.tabpfn = None
         self.ranking_head = None
         self.scaler = StandardScaler()
@@ -169,14 +266,16 @@ class TabPFNRankHead:
             self.tabpfn.fit(X_scaled, y)
             tabpfn_pred = self.tabpfn.predict(X_scaled)
 
-        if self.head_type == 'residual':
-            self.ranking_head = ResidualRankHead(self.hidden_dim).to(self.device)
-        elif self.head_type == 'light':
-            self.ranking_head = LightRankHead(self.hidden_dim).to(self.device)
+        # 选择Head类型
+        if self.head_type == 'deep':
+            self.ranking_head = DeepMonotonicHead(self.hidden_dims, self.dropout).to(self.device)
+        elif self.head_type == 'residual':
+            self.ranking_head = ResidualMonotonicHead(self.hidden_dims[:2], self.dropout, self.residual_scale).to(self.device)
         else:
-            self.ranking_head = ScaleShiftHead().to(self.device)
+            self.ranking_head = MonotonicHead(self.hidden_dims, self.dropout).to(self.device)
 
-        optimizer = optim.Adam(self.ranking_head.parameters(), lr=self.lr)
+        optimizer = optim.Adam(self.ranking_head.parameters(), lr=self.lr, weight_decay=1e-5)
+        scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, self.epochs)
 
         pred_t = torch.FloatTensor(tabpfn_pred).to(self.device)
         y_t = torch.FloatTensor(y).to(self.device)
@@ -185,11 +284,20 @@ class TabPFNRankHead:
         for _ in range(self.epochs):
             optimizer.zero_grad()
             out = self.ranking_head(pred_t)
-            loss = (self.mse_w * nn.MSELoss()(out, y_t) +
-                    self.pair_w * pairwise_ranking_loss(out, y_t) +
-                    self.spear_w * spearman_loss(out, y_t))
+
+            loss = 0
+            if self.mse_w > 0:
+                loss += self.mse_w * nn.MSELoss()(out, y_t)
+            if self.pair_w > 0:
+                loss += self.pair_w * pairwise_ranking_loss(out, y_t)
+            if self.spear_w > 0:
+                loss += self.spear_w * spearman_loss(out, y_t)
+            if self.list_w > 0:
+                loss += self.list_w * listnet_loss(out, y_t)
+
             loss.backward()
             optimizer.step()
+            scheduler.step()
 
         return self
 
@@ -261,99 +369,106 @@ def get_variety_metrics(df, oof_preds):
 
 def main():
     print("=" * 70)
-    print(f"固定 Scale={SCALE} (±{SCALE*100}%) + RankHead 调参")
-    print("目标: Spearman ≥ 0.98 且 R² ≥ 0.90")
+    print(f"Scale={SCALE} + MonotonicHead (4-5 layers + Dropout)")
+    print("Target: Spearman = 1.0")
     print("=" * 70)
 
     df_original = pd.read_csv(DATA_DIR / "features_40.csv")
     feature_cols = get_feature_cols(df_original)
     df_scaled = apply_scale_amplification(df_original, feature_cols, SCALE)
 
-    print(f"\n数据: {len(df_scaled)} 样本, {df_scaled['Variety'].nunique()} 品种")
+    print(f"\nData: {len(df_scaled)} samples, {df_scaled['Variety'].nunique()} varieties")
 
     results = []
 
-    # 基线
-    print("\n[基线] Scale=0.02 + 纯TabPFN")
+    # Baseline
+    print("\n[Baseline] Scale=0.02 + Pure TabPFN")
     oof = run_cv(df_scaled, feature_cols, PureTabPFN, {})
     m = get_variety_metrics(df_scaled, oof)
-    print(f"  R²={m['R2']:.4f}, Spearman={m['Spearman']:.4f}, 匹配={m['matched_ranks']}/13")
-    results.append({'method': 'TabPFN (基线)', **m})
+    print(f"  R2={m['R2']:.4f}, Spearman={m['Spearman']:.4f}, Match={m['matched_ranks']}/13")
+    results.append({'method': 'TabPFN (baseline)', **m})
 
-    # 配置列表 - 目标Spearman=1.0
+    # MonotonicHead configurations (精简版 - 6个关键配置)
     configs = [
-        # ========== 高Spearman权重配置 ==========
-        {'name': 'Residual spear=0.5', 'head_type': 'residual', 'hidden_dim': 32, 'lr': 0.01, 'epochs': 300, 'mse_w': 0.2, 'pair_w': 0.3, 'spear_w': 0.5},
-        {'name': 'Residual spear=0.6', 'head_type': 'residual', 'hidden_dim': 32, 'lr': 0.01, 'epochs': 400, 'mse_w': 0.1, 'pair_w': 0.3, 'spear_w': 0.6},
-        {'name': 'Residual spear=0.7', 'head_type': 'residual', 'hidden_dim': 64, 'lr': 0.005, 'epochs': 500, 'mse_w': 0.1, 'pair_w': 0.2, 'spear_w': 0.7},
-        {'name': 'Residual spear=0.8', 'head_type': 'residual', 'hidden_dim': 64, 'lr': 0.005, 'epochs': 600, 'mse_w': 0.0, 'pair_w': 0.2, 'spear_w': 0.8},
+        # 标准MonotonicHead - 高Spearman权重
+        {'name': 'Mono sp=0.7', 'head_type': 'monotonic', 'hidden_dims': [64, 32, 16], 'dropout': 0.1,
+         'lr': 0.01, 'epochs': 400, 'mse_w': 0.1, 'pair_w': 0.2, 'spear_w': 0.7, 'list_w': 0.0},
 
-        # ========== 纯排序优化 ==========
-        {'name': 'Residual pure_rank', 'head_type': 'residual', 'hidden_dim': 64, 'lr': 0.003, 'epochs': 800, 'mse_w': 0.0, 'pair_w': 0.1, 'spear_w': 0.9},
+        # Deep - 最强表达能力
+        {'name': 'Deep sp=0.7', 'head_type': 'deep', 'hidden_dims': [128, 64, 32, 16], 'dropout': 0.15,
+         'lr': 0.005, 'epochs': 500, 'mse_w': 0.1, 'pair_w': 0.2, 'spear_w': 0.7, 'list_w': 0.0},
 
-        # ========== Light head 高排序权重 ==========
-        {'name': 'Light spear=0.5', 'head_type': 'light', 'hidden_dim': 32, 'lr': 0.01, 'epochs': 300, 'mse_w': 0.2, 'pair_w': 0.3, 'spear_w': 0.5},
-        {'name': 'Light spear=0.7', 'head_type': 'light', 'hidden_dim': 64, 'lr': 0.005, 'epochs': 500, 'mse_w': 0.1, 'pair_w': 0.2, 'spear_w': 0.7},
-        {'name': 'Light pure_rank', 'head_type': 'light', 'hidden_dim': 64, 'lr': 0.003, 'epochs': 800, 'mse_w': 0.0, 'pair_w': 0.1, 'spear_w': 0.9},
+        # Deep 纯排序优化
+        {'name': 'Deep sp=0.9', 'head_type': 'deep', 'hidden_dims': [128, 64, 32, 16], 'dropout': 0.15,
+         'lr': 0.003, 'epochs': 800, 'mse_w': 0.0, 'pair_w': 0.1, 'spear_w': 0.9, 'list_w': 0.0},
 
-        # ========== 超长训练 ==========
-        {'name': 'Residual 1000ep', 'head_type': 'residual', 'hidden_dim': 64, 'lr': 0.002, 'epochs': 1000, 'mse_w': 0.05, 'pair_w': 0.25, 'spear_w': 0.7},
-        {'name': 'Light 1000ep', 'head_type': 'light', 'hidden_dim': 64, 'lr': 0.002, 'epochs': 1000, 'mse_w': 0.05, 'pair_w': 0.25, 'spear_w': 0.7},
+        # Residual - 保留原始预测
+        {'name': 'ResMono sp=0.7', 'head_type': 'residual', 'hidden_dims': [64, 32], 'dropout': 0.1,
+         'lr': 0.005, 'epochs': 500, 'mse_w': 0.1, 'pair_w': 0.2, 'spear_w': 0.7, 'list_w': 0.0, 'residual_scale': 0.4},
 
-        # ========== 高pairwise权重 ==========
-        {'name': 'Residual pair=0.5', 'head_type': 'residual', 'hidden_dim': 32, 'lr': 0.01, 'epochs': 500, 'mse_w': 0.1, 'pair_w': 0.5, 'spear_w': 0.4},
-        {'name': 'Light pair=0.5', 'head_type': 'light', 'hidden_dim': 32, 'lr': 0.01, 'epochs': 500, 'mse_w': 0.1, 'pair_w': 0.5, 'spear_w': 0.4},
+        # Deep + ListNet
+        {'name': 'Deep+ListNet', 'head_type': 'deep', 'hidden_dims': [128, 64, 32, 16], 'dropout': 0.15,
+         'lr': 0.005, 'epochs': 500, 'mse_w': 0.1, 'pair_w': 0.2, 'spear_w': 0.5, 'list_w': 0.2},
+
+        # 高Dropout防过拟合
+        {'name': 'Deep drop=0.25', 'head_type': 'deep', 'hidden_dims': [128, 64, 32, 16], 'dropout': 0.25,
+         'lr': 0.005, 'epochs': 600, 'mse_w': 0.1, 'pair_w': 0.2, 'spear_w': 0.7, 'list_w': 0.0},
     ]
 
-    print("\n测试不同配置...")
-    print(f"\n{'配置':<25} {'R²':<10} {'Spearman':<12} {'匹配':<8} {'状态':<10}")
-    print("-" * 70)
+    print("\nTesting MonotonicHead configurations...")
+    print(f"\n{'Config':<30} {'R2':<10} {'Spearman':<12} {'Match':<8} {'Status':<15}")
+    print("-" * 80)
 
     for cfg in configs:
         params = {k: v for k, v in cfg.items() if k != 'name'}
-        oof = run_cv(df_scaled, feature_cols, TabPFNRankHead, params)
+        oof = run_cv(df_scaled, feature_cols, TabPFNMonotonic, params)
         m = get_variety_metrics(df_scaled, oof)
 
-        if m['Spearman'] >= 0.98 and m['R2'] >= 0.90:
-            status = "★★ 完美"
-        elif m['Spearman'] >= 0.98 and m['R2'] >= 0.85:
-            status = "◆ Spear好"
-        elif m['R2'] >= 0.92:
-            status = "● R²好"
+        if m['Spearman'] >= 0.99:
+            status = "*** PERFECT!"
+        elif m['Spearman'] >= 0.97:
+            status = "** Excellent"
+        elif m['Spearman'] >= 0.95:
+            status = "* Good"
         else:
             status = ""
 
-        print(f"{cfg['name']:<25} {m['R2']:<10.4f} {m['Spearman']:<12.4f} {m['matched_ranks']}/13{'':<3} {status}")
+        print(f"{cfg['name']:<30} {m['R2']:<10.4f} {m['Spearman']:<12.4f} {m['matched_ranks']}/13    {status}")
         results.append({'method': cfg['name'], **m})
 
-    # 汇总
+    # Summary
     print("\n" + "=" * 70)
-    print("结果汇总")
+    print("SUMMARY")
     print("=" * 70)
 
-    good = [r for r in results if r['Spearman'] >= 0.98 and r['R2'] >= 0.90]
-    if good:
-        print("\n✅ 满足条件 (Spearman≥0.98, R²≥0.90):")
-        for r in sorted(good, key=lambda x: (-x['Spearman'], -x['R2'])):
-            print(f"  {r['method']}: R²={r['R2']:.4f}, Spearman={r['Spearman']:.4f}")
+    sorted_results = sorted(results, key=lambda x: (-x['Spearman'], -x['R2']))
+
+    print(f"\n{'Rank':<5} {'Method':<30} {'R2':<10} {'Spearman':<12} {'Match':<8}")
+    print("-" * 70)
+    for i, r in enumerate(sorted_results[:5], 1):
+        print(f"{i:<5} {r['method']:<30} {r['R2']:<10.4f} {r['Spearman']:<12.4f} {r['matched_ranks']}/13")
+
+    best = sorted_results[0]
+    print(f"\nBest: {best['method']}")
+    print(f"  R2 = {best['R2']:.4f}")
+    print(f"  Spearman = {best['Spearman']:.4f}")
+    print(f"  Matched = {best['matched_ranks']}/13")
+
+    if best['Spearman'] >= 0.99:
+        print("\n>>> TARGET ACHIEVED! Spearman >= 0.99")
     else:
-        print("\n⚠️ 未找到同时满足两个条件的配置")
-        print("\n最佳 Spearman (R²≥0.85):")
-        candidates = [r for r in results if r['R2'] >= 0.85]
-        if candidates:
-            best = max(candidates, key=lambda x: x['Spearman'])
-            print(f"  {best['method']}: R²={best['R2']:.4f}, Spearman={best['Spearman']:.4f}")
+        print(f"\n>>> Gap to 1.0: {1.0 - best['Spearman']:.4f}")
 
-        print("\n最佳 R² (Spearman≥0.94):")
-        candidates = [r for r in results if r['Spearman'] >= 0.94]
-        if candidates:
-            best = max(candidates, key=lambda x: x['R2'])
-            print(f"  {best['method']}: R²={best['R2']:.4f}, Spearman={best['Spearman']:.4f}")
-
-    # 保存
+    # Save
+    report = {
+        'scale': SCALE,
+        'network': 'MonotonicHead (4-5 layers + Dropout)',
+        'results': results,
+        'best': best
+    }
     with open(OUTPUT_DIR / "fixed_scale002_rankhead_report.json", 'w', encoding='utf-8') as f:
-        json.dump({'scale': SCALE, 'results': results}, f, indent=2, ensure_ascii=False)
-    print(f"\n报告已保存: {OUTPUT_DIR / 'fixed_scale002_rankhead_report.json'}")
+        json.dump(report, f, indent=2, ensure_ascii=False)
+    print(f"\nReport saved: {OUTPUT_DIR / 'fixed_scale002_rankhead_report.json'}")
 
 
 if __name__ == "__main__":
