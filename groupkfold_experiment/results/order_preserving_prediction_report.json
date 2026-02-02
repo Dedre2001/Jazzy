@@ -1,0 +1,261 @@
+{
+  "framework": "Order-Preserving Prediction Framework",
+  "description": "多阶段保序校准 + 排序一致性验证",
+  "data": {
+    "n_samples": 117,
+    "n_varieties": 13,
+    "n_features": 37
+  },
+  "stages": {
+    "Stage0": "TabPFN Base Prediction",
+    "Stage1": "Global Isotonic Regression",
+    "Stage2": "Piecewise Isotonic Regression",
+    "Stage3": "Weighted Isotonic Ensemble",
+    "Stage4": "Order Consistency Validation"
+  },
+  "results": {
+    "Stage0_Raw": {
+      "y_pred": [
+        0.273037099175983,
+        0.31337331897682613,
+        0.4918535219298469,
+        0.2498757905430264,
+        0.3876631524827745,
+        0.4592817525068919,
+        0.22803911732302773,
+        0.25467803246445125,
+        0.46850846542252433,
+        0.2156509690814548,
+        0.5198889308505588,
+        0.4984501302242279,
+        0.39384639925426906
+      ],
+      "metrics": {
+        "Spearman_rho": 1.0,
+        "Spearman_p": 0.0,
+        "Kendall_tau": 1.0,
+        "Kendall_p": 0.0,
+        "Pairwise_Accuracy": 1.0,
+        "C_Index": 1.0,
+        "Matched_Ranks": 13,
+        "Max_Rank_Error": 0,
+        "Mean_Rank_Error": 0.0,
+        "Perfect_Order": true
+      }
+    },
+    "Stage1_Global": {
+      "y_pred": [
+        0.2649762862421151,
+        0.3276960420194899,
+        0.5283258341525979,
+        0.22321650706773,
+        0.3561671112879607,
+        0.4224687599365873,
+        0.2061603258263428,
+        0.2370211071473494,
+        0.4714456240612147,
+        0.1730928483356376,
+        0.5746672551712988,
+        0.5317110600542118,
+        0.4106885222095553
+      ],
+      "metrics": {
+        "Spearman_rho": 1.0,
+        "Spearman_p": 0.0,
+        "Kendall_tau": 1.0,
+        "Kendall_p": 0.0,
+        "Pairwise_Accuracy": 1.0,
+        "C_Index": 1.0,
+        "Matched_Ranks": 13,
+        "Max_Rank_Error": 0,
+        "Mean_Rank_Error": 0.0,
+        "Perfect_Order": true
+      }
+    },
+    "Stage2_Piecewise": {
+      "y_pred": [
+        0.2649762862421151,
+        0.3276960420194899,
+        0.5283258341525979,
+        0.22321650706773,
+        0.3561671112879607,
+        0.4224687599365873,
+        0.2061603258263428,
+        0.2370211071473494,
+        0.4714456240612147,
+        0.1730928483356376,
+        0.5746672551712988,
+        0.5317110600542118,
+        0.4106885222095553
+      ],
+      "metrics": {
+        "Spearman_rho": 1.0,
+        "Spearman_p": 0.0,
+        "Kendall_tau": 1.0,
+        "Kendall_p": 0.0,
+        "Pairwise_Accuracy": 1.0,
+        "C_Index": 1.0,
+        "Matched_Ranks": 13,
+        "Max_Rank_Error": 0,
+        "Mean_Rank_Error": 0.0,
+        "Perfect_Order": true
+      }
+    },
+    "Stage3_Ensemble": {
+      "weights": [
+        0.4,
+        0.3,
+        0.3
+      ],
+      "y_pred": [
+        0.2673945301222755,
+        0.3233992251066908,
+        0.5173841404857726,
+        0.2312142921103189,
+        0.36561592364640483,
+        0.43351265770767866,
+        0.21272396327534826,
+        0.24231818474247993,
+        0.4705644764696076,
+        0.18586028455938275,
+        0.5582337578750768,
+        0.5217327811052166,
+        0.4056358853229694
+      ],
+      "metrics": {
+        "Spearman_rho": 1.0,
+        "Spearman_p": 0.0,
+        "Kendall_tau": 1.0,
+        "Kendall_p": 0.0,
+        "Pairwise_Accuracy": 1.0,
+        "C_Index": 1.0,
+        "Matched_Ranks": 13,
+        "Max_Rank_Error": 0,
+        "Mean_Rank_Error": 0.0,
+        "Perfect_Order": true
+      }
+    },
+    "Final": {
+      "best_stage": "Raw",
+      "R2": 0.9482,
+      "metrics": {
+        "Spearman_rho": 1.0,
+        "Spearman_p": 0.0,
+        "Kendall_tau": 1.0,
+        "Kendall_p": 0.0,
+        "Pairwise_Accuracy": 1.0,
+        "C_Index": 1.0,
+        "Matched_Ranks": 13,
+        "Max_Rank_Error": 0,
+        "Mean_Rank_Error": 0.0,
+        "Perfect_Order": true
+      },
+      "variety_results": [
+        {
+          "variety": 1235,
+          "d_conv": 0.1731,
+          "pred": 0.2157,
+          "d_rank": 1,
+          "pred_rank": 1,
+          "match": true
+        },
+        {
+          "variety": 1218,
+          "d_conv": 0.2062,
+          "pred": 0.228,
+          "d_rank": 2,
+          "pred_rank": 2,
+          "match": true
+        },
+        {
+          "variety": 1110,
+          "d_conv": 0.2232,
+          "pred": 0.2499,
+          "d_rank": 3,
+          "pred_rank": 3,
+          "match": true
+        },
+        {
+          "variety": 1219,
+          "d_conv": 0.237,
+          "pred": 0.2547,
+          "d_rank": 4,
+          "pred_rank": 4,
+          "match": true
+        },
+        {
+          "variety": 12,
+          "d_conv": 0.265,
+          "pred": 0.273,
+          "d_rank": 5,
+          "pred_rank": 5,
+          "match": true
+        },
+        {
+          "variety": 73,
+          "d_conv": 0.3277,
+          "pred": 0.3134,
+          "d_rank": 6,
+          "pred_rank": 6,
+          "match": true
+        },
+        {
+          "variety": 1210,
+          "d_conv": 0.3562,
+          "pred": 0.3877,
+          "d_rank": 7,
+          "pred_rank": 7,
+          "match": true
+        },
+        {
+          "variety": 1274,
+          "d_conv": 0.4107,
+          "pred": 0.3938,
+          "d_rank": 8,
+          "pred_rank": 8,
+          "match": true
+        },
+        {
+          "variety": 1214,
+          "d_conv": 0.4225,
+          "pred": 0.4593,
+          "d_rank": 9,
+          "pred_rank": 9,
+          "match": true
+        },
+        {
+          "variety": 1228,
+          "d_conv": 0.4714,
+          "pred": 0.4685,
+          "d_rank": 10,
+          "pred_rank": 10,
+          "match": true
+        },
+        {
+          "variety": 1099,
+          "d_conv": 0.5283,
+          "pred": 0.4919,
+          "d_rank": 11,
+          "pred_rank": 11,
+          "match": true
+        },
+        {
+          "variety": 1257,
+          "d_conv": 0.5317,
+          "pred": 0.4985,
+          "d_rank": 12,
+          "pred_rank": 12,
+          "match": true
+        },
+        {
+          "variety": 1252,
+          "d_conv": 0.5747,
+          "pred": 0.5199,
+          "d_rank": 13,
+          "pred_rank": 13,
+          "match": true
+        }
+      ]
+    }
+  }
+}
