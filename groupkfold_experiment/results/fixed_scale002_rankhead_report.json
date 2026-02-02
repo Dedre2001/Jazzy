@@ -1,0 +1,71 @@
+{
+  "scale": 0.02,
+  "results": [
+    {
+      "method": "TabPFN (基线)",
+      "R2": 0.9323,
+      "Spearman": 0.9451,
+      "matched_ranks": 5
+    },
+    {
+      "method": "Residual mse=0.7",
+      "R2": 0.9335,
+      "Spearman": 0.9451,
+      "matched_ranks": 5
+    },
+    {
+      "method": "Residual mse=0.6",
+      "R2": 0.9336,
+      "Spearman": 0.9451,
+      "matched_ranks": 5
+    },
+    {
+      "method": "Residual mse=0.5",
+      "R2": 0.9338,
+      "Spearman": 0.9451,
+      "matched_ranks": 5
+    },
+    {
+      "method": "Light mse=0.7",
+      "R2": 0.6301,
+      "Spearman": 0.8791,
+      "matched_ranks": 2
+    },
+    {
+      "method": "Light mse=0.6",
+      "R2": 0.7907,
+      "Spearman": 0.8956,
+      "matched_ranks": 7
+    },
+    {
+      "method": "Light mse=0.5",
+      "R2": 0.7899,
+      "Spearman": 0.8791,
+      "matched_ranks": 2
+    },
+    {
+      "method": "ScaleShift mse=0.7",
+      "R2": 0.9334,
+      "Spearman": 0.9451,
+      "matched_ranks": 5
+    },
+    {
+      "method": "ScaleShift mse=0.5",
+      "R2": 0.9338,
+      "Spearman": 0.9451,
+      "matched_ranks": 5
+    },
+    {
+      "method": "Residual 300ep",
+      "R2": 0.9337,
+      "Spearman": 0.9451,
+      "matched_ranks": 5
+    },
+    {
+      "method": "Light 300ep",
+      "R2": 0.8945,
+      "Spearman": 0.9121,
+      "matched_ranks": 4
+    }
+  ]
+}
