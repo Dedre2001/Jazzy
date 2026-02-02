@@ -550,9 +550,23 @@ def main():
         'results': results
     }
 
+    def _json_safe(obj):
+        """Convert common non-JSON types (e.g., numpy scalars) to plain Python types."""
+        try:
+            import numpy as _np
+            if isinstance(obj, _np.generic):
+                return obj.item()
+            if isinstance(obj, _np.ndarray):
+                return obj.tolist()
+        except Exception:
+            pass
+        if isinstance(obj, (set, tuple)):
+            return list(obj)
+        return obj
+
     report_file = OUTPUT_DIR / "order_preserving_prediction_report.json"
     with open(report_file, 'w', encoding='utf-8') as f:
-        json.dump(report, f, indent=2, ensure_ascii=False)
+        json.dump(report, f, indent=2, ensure_ascii=False, default=_json_safe)
     print(f"\n完整报告已保存: {report_file}")
 
 
