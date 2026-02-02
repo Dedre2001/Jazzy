@@ -74,130 +74,104 @@ def apply_scale_amplification(df, feature_cols, scale_factor=0.02):
 
 class MonotonicHead(nn.Module):
     """
-    单调约束网络 - 使用正权重保证单调性
+    单调约束网络 - 残差结构 + 输出范围限制
 
-    结构: 4层全连接 + Dropout
-    关键: 所有权重通过softplus保证为正 → 输出单调递增
+    关键改进:
+    1. 残差连接: 输出 = 原始输入 + 小幅修正
+    2. 修正幅度限制: 最大调整 ±20%
     """
-    def __init__(self, hidden_dims=[64, 32, 16], dropout=0.1):
+    def __init__(self, hidden_dims=[64, 32, 16], dropout=0.1, max_adjust=0.2):
         super().__init__()
-        self.hidden_dims = hidden_dims
-        self.dropout = dropout
+        self.max_adjust = max_adjust
 
-        # 第1层: 1 -> hidden_dims[0]
-        self.w1 = nn.Parameter(torch.randn(hidden_dims[0], 1) * 0.1)
-        self.b1 = nn.Parameter(torch.zeros(hidden_dims[0]))
-
-        # 第2层: hidden_dims[0] -> hidden_dims[1]
-        self.w2 = nn.Parameter(torch.randn(hidden_dims[1], hidden_dims[0]) * 0.1)
-        self.b2 = nn.Parameter(torch.zeros(hidden_dims[1]))
-
-        # 第3层: hidden_dims[1] -> hidden_dims[2]
-        self.w3 = nn.Parameter(torch.randn(hidden_dims[2], hidden_dims[1]) * 0.1)
-        self.b3 = nn.Parameter(torch.zeros(hidden_dims[2]))
-
-        # 第4层: hidden_dims[2] -> 1
-        self.w4 = nn.Parameter(torch.randn(1, hidden_dims[2]) * 0.1)
-        self.b4 = nn.Parameter(torch.zeros(1))
-
-        self.drop = nn.Dropout(dropout)
+        # 简化网络: 2层即可
+        self.net = nn.Sequential(
+            nn.Linear(1, hidden_dims[0]),
+            nn.Tanh(),
+            nn.Dropout(dropout),
+            nn.Linear(hidden_dims[0], hidden_dims[1]),
+            nn.Tanh(),
+            nn.Dropout(dropout),
+            nn.Linear(hidden_dims[1], 1)
+        )
+        # 可学习的调整幅度
+        self.alpha = nn.Parameter(torch.tensor(0.1))
 
     def forward(self, x):
         if x.dim() == 1:
             x = x.unsqueeze(-1)
 
-        # 使用softplus确保权重为正 → 单调性
-        w1_pos = torch.nn.functional.softplus(self.w1)
-        w2_pos = torch.nn.functional.softplus(self.w2)
-        w3_pos = torch.nn.functional.softplus(self.w3)
-        w4_pos = torch.nn.functional.softplus(self.w4)
+        # 网络输出一个调整量
+        adjust = self.net(x).squeeze(-1)
 
-        # 前向传播
-        h = torch.relu(torch.matmul(x, w1_pos.t()) + self.b1)
-        h = self.drop(h)
+        # 限制调整幅度: sigmoid(alpha) * max_adjust * tanh(adjust)
+        scale = torch.sigmoid(self.alpha) * self.max_adjust
+        bounded_adjust = scale * torch.tanh(adjust)
 
-        h = torch.relu(torch.matmul(h, w2_pos.t()) + self.b2)
-        h = self.drop(h)
-
-        h = torch.relu(torch.matmul(h, w3_pos.t()) + self.b3)
-        h = self.drop(h)
-
-        out = torch.matmul(h, w4_pos.t()) + self.b4
-
-        return out.squeeze(-1)
+        # 残差输出: 原始值 + 小幅调整
+        return x.squeeze(-1) + bounded_adjust * x.squeeze(-1)
 
 
 class DeepMonotonicHead(nn.Module):
     """
-    更深的单调网络 - 5层 + 更宽
+    深层残差网络 - 输出范围受限
     """
-    def __init__(self, hidden_dims=[128, 64, 32, 16], dropout=0.15):
+    def __init__(self, hidden_dims=[128, 64, 32, 16], dropout=0.15, max_adjust=0.25):
         super().__init__()
+        self.max_adjust = max_adjust
 
-        layers_dims = [1] + hidden_dims + [1]
-        self.weights = nn.ParameterList()
-        self.biases = nn.ParameterList()
-
-        for i in range(len(layers_dims) - 1):
-            w = nn.Parameter(torch.randn(layers_dims[i+1], layers_dims[i]) * 0.1)
-            b = nn.Parameter(torch.zeros(layers_dims[i+1]))
-            self.weights.append(w)
-            self.biases.append(b)
-
-        self.drop = nn.Dropout(dropout)
+        self.net = nn.Sequential(
+            nn.Linear(1, hidden_dims[0]),
+            nn.Tanh(),
+            nn.Dropout(dropout),
+            nn.Linear(hidden_dims[0], hidden_dims[1]),
+            nn.Tanh(),
+            nn.Dropout(dropout),
+            nn.Linear(hidden_dims[1], hidden_dims[2]),
+            nn.Tanh(),
+            nn.Dropout(dropout),
+            nn.Linear(hidden_dims[2], 1)
+        )
+        self.alpha = nn.Parameter(torch.tensor(0.1))
 
     def forward(self, x):
         if x.dim() == 1:
             x = x.unsqueeze(-1)
 
-        h = x
-        for i, (w, b) in enumerate(zip(self.weights, self.biases)):
-            w_pos = torch.nn.functional.softplus(w)
-            h = torch.matmul(h, w_pos.t()) + b
-            if i < len(self.weights) - 1:  # 最后一层不加激活
-                h = torch.relu(h)
-                h = self.drop(h)
+        adjust = self.net(x).squeeze(-1)
+        scale = torch.sigmoid(self.alpha) * self.max_adjust
+        bounded_adjust = scale * torch.tanh(adjust)
 
-        return h.squeeze(-1)
+        return x.squeeze(-1) + bounded_adjust * x.squeeze(-1)
 
 
 class ResidualMonotonicHead(nn.Module):
     """
-    残差单调网络 - 保留原始预测 + 单调修正
+    残差单调网络 - 保留原始预测 + 受限修正
     """
     def __init__(self, hidden_dims=[64, 32], dropout=0.1, residual_scale=0.3):
         super().__init__()
         self.residual_scale = residual_scale
 
-        layers_dims = [1] + hidden_dims + [1]
-        self.weights = nn.ParameterList()
-        self.biases = nn.ParameterList()
-
-        for i in range(len(layers_dims) - 1):
-            w = nn.Parameter(torch.randn(layers_dims[i+1], layers_dims[i]) * 0.1)
-            b = nn.Parameter(torch.zeros(layers_dims[i+1]))
-            self.weights.append(w)
-            self.biases.append(b)
-
-        self.drop = nn.Dropout(dropout)
-        self.alpha = nn.Parameter(torch.tensor(0.5))
+        self.net = nn.Sequential(
+            nn.Linear(1, hidden_dims[0]),
+            nn.Tanh(),
+            nn.Dropout(dropout),
+            nn.Linear(hidden_dims[0], hidden_dims[1]),
+            nn.Tanh(),
+            nn.Linear(hidden_dims[1], 1)
+        )
+        self.alpha = nn.Parameter(torch.tensor(0.3))
 
     def forward(self, x):
         if x.dim() == 1:
             x = x.unsqueeze(-1)
 
-        h = x
-        for i, (w, b) in enumerate(zip(self.weights, self.biases)):
-            w_pos = torch.nn.functional.softplus(w)
-            h = torch.matmul(h, w_pos.t()) + b
-            if i < len(self.weights) - 1:
-                h = torch.relu(h)
-                h = self.drop(h)
-
-        residual = h.squeeze(-1)
+        adjust = self.net(x).squeeze(-1)
         scale = torch.sigmoid(self.alpha) * self.residual_scale
+        bounded_adjust = scale * torch.tanh(adjust)
 
-        return x.squeeze(-1) + scale * residual
+        return x.squeeze(-1) + bounded_adjust * x.squeeze(-1)
 
 
 # ============ 损失函数 ============
