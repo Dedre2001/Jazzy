@@ -1,0 +1,64 @@
+{
+  "data": "features_adjusted_spearman1.csv",
+  "n_samples": 117,
+  "n_varieties": 13,
+  "cv_method": "5-fold GroupKFold",
+  "results": [
+    {
+      "model": "TabPFN",
+      "R2": 0.9482,
+      "RMSE": 0.0299,
+      "Spearman": 1.0,
+      "matched_ranks": 13,
+      "Pairwise_Acc": 1.0
+    },
+    {
+      "model": "Ridge",
+      "R2": 0.907,
+      "RMSE": 0.0401,
+      "Spearman": 0.9396,
+      "matched_ranks": 2,
+      "Pairwise_Acc": 0.9103
+    },
+    {
+      "model": "SVR",
+      "R2": 0.4195,
+      "RMSE": 0.1003,
+      "Spearman": 0.9341,
+      "matched_ranks": 6,
+      "Pairwise_Acc": 0.8974
+    },
+    {
+      "model": "PLSR",
+      "R2": 0.9345,
+      "RMSE": 0.0337,
+      "Spearman": 0.978,
+      "matched_ranks": 5,
+      "Pairwise_Acc": 0.9487
+    },
+    {
+      "model": "CatBoost",
+      "R2": 0.8564,
+      "RMSE": 0.0499,
+      "Spearman": 0.978,
+      "matched_ranks": 8,
+      "Pairwise_Acc": 0.9615
+    },
+    {
+      "model": "RF",
+      "R2": 0.851,
+      "RMSE": 0.0508,
+      "Spearman": 0.967,
+      "matched_ranks": 7,
+      "Pairwise_Acc": 0.9487
+    }
+  ],
+  "best_model": {
+    "model": "TabPFN",
+    "R2": 0.9482,
+    "RMSE": 0.0299,
+    "Spearman": 1.0,
+    "matched_ranks": 13,
+    "Pairwise_Acc": 1.0
+  }
+}
