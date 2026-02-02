@@ -1,0 +1,66 @@
+{
+  "n_samples": 117,
+  "n_varieties": 13,
+  "n_runs_per_test": 5,
+  "test1_random_seed": {
+    "spearman": {
+      "mean": 1.0,
+      "std": 0.0,
+      "ci_95": [
+        1.0,
+        1.0
+      ],
+      "range": [
+        1.0,
+        1.0
+      ],
+      "perfect_count": 5
+    },
+    "r2": {
+      "mean": 0.9481,
+      "std": 0.0003,
+      "ci_95": [
+        0.9478,
+        0.9484
+      ]
+    }
+  },
+  "test2_shuffle": {
+    "spearman": {
+      "mean": 1.0,
+      "std": 0.0,
+      "ci_95": [
+        1.0,
+        1.0
+      ],
+      "perfect_count": 5
+    },
+    "r2": {
+      "mean": 0.9481,
+      "std": 0.0002,
+      "ci_95": [
+        0.9478,
+        0.9484
+      ]
+    }
+  },
+  "overall": {
+    "spearman": {
+      "mean": 1.0,
+      "std": 0.0,
+      "ci_95": [
+        1.0,
+        1.0
+      ]
+    },
+    "r2": {
+      "mean": 0.9481,
+      "std": 0.0002,
+      "ci_95": [
+        0.9479,
+        0.9483
+      ]
+    },
+    "perfect_spearman_rate": "10%"
+  }
+}
