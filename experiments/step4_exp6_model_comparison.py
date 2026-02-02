@@ -19,7 +19,7 @@ import json
 import os
 from datetime import datetime
 from pathlib import Path
-from sklearn.model_selection import KFold, GridSearchCV
+from sklearn.model_selection import GroupKFold, GridSearchCV
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import Ridge
 from sklearn.cross_decomposition import PLSRegression
@@ -140,13 +140,14 @@ def run_model_cv(df, feature_cols, model_name, target_col='D_conv', n_splits=5):
     """运行单个模型的交叉验证"""
     X = df[feature_cols].values
     y = df[target_col].values
+    groups = df['Variety'].values  # 按品种分组
 
     oof_predictions = np.zeros(len(y))
     fold_metrics = []
 
-    kfold = KFold(n_splits=n_splits, shuffle=True, random_state=RANDOM_STATE)
+    gkfold = GroupKFold(n_splits=n_splits)
 
-    for fold, (train_idx, test_idx) in enumerate(kfold.split(X)):
+    for fold, (train_idx, test_idx) in enumerate(gkfold.split(X, y, groups=groups)):
         X_train, X_test = X[train_idx], X[test_idx]
         y_train, y_test = y[train_idx], y[test_idx]
 
@@ -357,7 +358,7 @@ def generate_report(all_results, model_names, feature_sets, tables, figures):
     report.append("")
     report.append(f"**报告生成时间:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     report.append(f"**随机种子:** {RANDOM_STATE}")
-    report.append(f"**交叉验证:** {N_SPLITS}折 KFold")
+    report.append(f"**交叉验证:** {N_SPLITS}折 GroupKFold")
     report.append(f"**特征集:** FS4 (三源融合, 40个特征)")
     report.append(f"**TabPFN可用:** {'是' if TABPFN_AVAILABLE else '否 (使用CatBoost替代)'}")
     report.append("")

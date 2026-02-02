@@ -14,7 +14,7 @@ import json
 import os
 from pathlib import Path
 from datetime import datetime
-from sklearn.model_selection import KFold
+from sklearn.model_selection import GroupKFold
 from sklearn.preprocessing import StandardScaler
 from catboost import CatBoostRegressor
 from scipy import stats
@@ -117,9 +117,10 @@ def run_kfold_cv(df, feature_cols, target_col='D_conv', n_splits=5):
     oof_predictions = np.zeros(len(y))
     fold_results = []
 
-    kfold = KFold(n_splits=n_splits, shuffle=True, random_state=RANDOM_STATE)
+    groups = df['Variety'].values  # 按品种分组
+    gkfold = GroupKFold(n_splits=n_splits)
 
-    for fold, (train_idx, test_idx) in enumerate(kfold.split(X)):
+    for fold, (train_idx, test_idx) in enumerate(gkfold.split(X, y, groups=groups)):
         X_train, X_test = X[train_idx], X[test_idx]
         y_train, y_test = y[train_idx], y[test_idx]
 

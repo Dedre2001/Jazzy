@@ -8,7 +8,7 @@ import numpy as np
 import json
 import os
 from pathlib import Path
-from sklearn.model_selection import KFold
+from sklearn.model_selection import GroupKFold
 from sklearn.preprocessing import StandardScaler
 from scipy.stats import spearmanr
 
@@ -93,7 +93,7 @@ def get_variety_metrics(y_true_variety, y_pred_variety):
 
 def run_kfold_cv(df, feature_cols, model_class, model_params, target_col='D_conv', n_splits=5):
     """
-    运行5-Fold交叉验证，返回OOF预测和品种层指标
+    运行5-Fold GroupKFold交叉验证，返回OOF预测和品种层指标
 
     参数:
     - df: 数据框
@@ -109,13 +109,14 @@ def run_kfold_cv(df, feature_cols, model_class, model_params, target_col='D_conv
     """
     X = df[feature_cols].values
     y = df[target_col].values
+    groups = df['Variety'].values  # 按品种分组
 
     # 存储OOF预测
     oof_predictions = np.zeros(len(y))
 
-    kfold = KFold(n_splits=n_splits, shuffle=True, random_state=RANDOM_STATE)
+    gkfold = GroupKFold(n_splits=n_splits)
 
-    for fold, (train_idx, test_idx) in enumerate(kfold.split(X)):
+    for fold, (train_idx, test_idx) in enumerate(gkfold.split(X, y, groups=groups)):
         X_train, X_test = X[train_idx], X[test_idx]
         y_train, y_test = y[train_idx], y[test_idx]
 

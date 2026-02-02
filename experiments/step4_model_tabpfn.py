@@ -15,7 +15,7 @@ import pandas as pd
 import json
 import time
 import torch
-from sklearn.model_selection import KFold
+from sklearn.model_selection import GroupKFold
 from sklearn.preprocessing import StandardScaler
 from step4_utils import load_data, get_variety_metrics, save_model_results, RANDOM_STATE, N_SPLITS, EXP6_DIR
 from tabpfn import TabPFNRegressor
@@ -59,11 +59,12 @@ def main():
 
     X = df[feature_cols].values
     y = df['D_conv'].values
+    groups = df['Variety'].values  # 按品种分组
 
     # 存储OOF预测
     oof_predictions = np.zeros(len(y))
 
-    kfold = KFold(n_splits=N_SPLITS, shuffle=True, random_state=RANDOM_STATE)
+    gkfold = GroupKFold(n_splits=N_SPLITS)
 
     # 指定本地权重目录（确保远程无法联网时仍可加载）
     os.environ.setdefault("TABPFN_MODEL_CACHE_DIR", MODEL_CACHE_DIR)
@@ -103,7 +104,7 @@ def main():
         model_path=str(MODEL_FILE),
     )
 
-    for fold, (train_idx, test_idx) in enumerate(kfold.split(X)):
+    for fold, (train_idx, test_idx) in enumerate(gkfold.split(X, y, groups=groups)):
         fold_start = time.time()
         print(f"  Fold {fold+1}/{N_SPLITS}...")
 
