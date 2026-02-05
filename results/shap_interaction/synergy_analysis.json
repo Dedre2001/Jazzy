@@ -1,0 +1,107 @@
+{
+  "cross_modal_mean": 8.555001609671342e-05,
+  "intra_modal_mean": 7.467975882322314e-05,
+  "cross_intra_ratio": 1.1455582803798499,
+  "modal_pair_stats": [
+    {
+      "Modal_Pair": "Multi-OJIP",
+      "Mean_Interaction": 7.944714994346238e-05,
+      "Total_Interaction": 0.012075966791406281,
+      "N_Pairs": 152
+    },
+    {
+      "Modal_Pair": "Multi-Static",
+      "Mean_Interaction": 6.178053553796697e-05,
+      "Total_Interaction": 0.011738301752213725,
+      "N_Pairs": 190
+    },
+    {
+      "Modal_Pair": "OJIP-Static",
+      "Mean_Interaction": 0.0001535979781149132,
+      "Total_Interaction": 0.012287838249193056,
+      "N_Pairs": 80
+    }
+  ],
+  "top_cross_modal": [
+    {
+      "Feature1": "BF(F440)",
+      "Modality1": "Static",
+      "Feature2": "OJIP_Vi",
+      "Modality2": "OJIP",
+      "Interaction": 0.0012962725269613329,
+      "Is_Cross_Modal": true
+    },
+    {
+      "Feature1": "SR_F440_F520",
+      "Modality1": "Static",
+      "Feature2": "OJIP_Vi",
+      "Modality2": "OJIP",
+      "Interaction": 0.0007430387974215007,
+      "Is_Cross_Modal": true
+    },
+    {
+      "Feature1": "R730",
+      "Modality1": "Multi",
+      "Feature2": "OJIP_Vi",
+      "Modality2": "OJIP",
+      "Interaction": 0.0007127407487524432,
+      "Is_Cross_Modal": true
+    },
+    {
+      "Feature1": "BF(F440)",
+      "Modality1": "Static",
+      "Feature2": "OJIP_FvFm",
+      "Modality2": "OJIP",
+      "Interaction": 0.0006826501869381837,
+      "Is_Cross_Modal": true
+    },
+    {
+      "Feature1": "R810",
+      "Modality1": "Multi",
+      "Feature2": "OJIP_Vi",
+      "Modality2": "OJIP",
+      "Interaction": 0.0006394916197355387,
+      "Is_Cross_Modal": true
+    },
+    {
+      "Feature1": "VI_PRI",
+      "Modality1": "Multi",
+      "Feature2": "SR_F520_F690",
+      "Modality2": "Static",
+      "Interaction": 0.0005927693617849666,
+      "Is_Cross_Modal": true
+    },
+    {
+      "Feature1": "SR_F440_F690",
+      "Modality1": "Static",
+      "Feature2": "OJIP_FvFm",
+      "Modality2": "OJIP",
+      "Interaction": 0.0005780061231519099,
+      "Is_Cross_Modal": true
+    },
+    {
+      "Feature1": "FrF(f740)",
+      "Modality1": "Static",
+      "Feature2": "OJIP_Vi",
+      "Modality2": "OJIP",
+      "Interaction": 0.0005204164774844168,
+      "Is_Cross_Modal": true
+    },
+    {
+      "Feature1": "VI_MTCI",
+      "Modality1": "Multi",
+      "Feature2": "SR_F440_F690",
+      "Modality2": "Static",
+      "Interaction": 0.0005127787682571221,
+      "Is_Cross_Modal": true
+    },
+    {
+      "Feature1": "RF(F690)",
+      "Modality1": "Static",
+      "Feature2": "OJIP_Vi",
+      "Modality2": "OJIP",
+      "Interaction": 0.000502559901663036,
+      "Is_Cross_Modal": true
+    }
+  ]
+}
