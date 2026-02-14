@@ -21,7 +21,7 @@
 
 ### 2.X.1.2 评价指标体系
 
-鉴于本研究的核心目标为品种抗旱性排序而非精确数值预测，评价指标体系涵盖四个维度：（1）回归精度指标，包括决定系数（R²）、均方根误差（RMSE）和平均绝对误差（MAE）；（2）排序一致性指标，包括Spearman等级相关系数（ρ）和Kendall秩相关系数（τ）；（3）Top-K命中率指标，包括Hit@3、Hit@5和Jaccard@K，用于评估高抗旱性品种的识别能力；（4）分类指标，将品种按D_conv值划分为耐旱（Tolerant, Rank 1-4）、中等（Moderate, Rank 5-8）和敏感（Sensitive, Rank 9-13）三个等级，计算分类准确率和Cohen's Kappa系数。
+鉴于本研究的核心目标为品种抗旱性排序而非精确数值预测，评价指标体系涵盖四个维度：（1）回归精度指标，包括决定系数（R²）、均方根误差（RMSE）和平均绝对误差（MAE）；（2）排序一致性指标，包括Spearman等级相关系数（ρ）和Kendall秩相关系数（τ）；（3）Top-K命中率指标，包括Hit@3、Hit@5和Jaccard@K，用于评估高抗旱性品种的识别能力；（4）分类指标，将品种按D_conv值通过层次聚类划分为耐旱（Tolerant, 3个）、中等（Intermediate, 5个）和敏感（Sensitive, 5个）三个等级，计算分类准确率和Cohen's Kappa系数。
 
 ### 2.X.1.3 交叉验证策略
 
@@ -69,7 +69,7 @@
 | Ridge | 0.67 | 1.00 | 0.770 |
 | SVR | 1.00 | 0.80 | 0.000 |
 
-*注：Kappa为Cohen's Kappa系数（三分类：耐旱/中等/敏感）。Kappa = 0表示分类结果与随机猜测无异。*
+*注：Kappa为Cohen's Kappa系数（三分类：耐旱/中等/敏感，分布3:5:5）。Kappa = 0表示分类结果与随机猜测无异。*
 
 ---
 
@@ -86,18 +86,18 @@
 | 1252 | Tolerant | 1 | 1 | 1 | 1 | 1 | 1 | 2 |
 | 1257 | Tolerant | 2 | 2 | 2 | 2 | 3 | 3 | 3 |
 | 1099 | Tolerant | 3 | 3 | 3 | 3 | 2 | 4 | 1 |
-| 1228 | Tolerant | 4 | 4 | 4 | 4 | 5 | 5 | 4 |
-| 1214 | Moderate | 5 | 5 | 5 | 5 | 4 | 2 | 8 |
-| 1274 | Moderate | 6 | 6 | 7 | 7 | 7 | 7 | 6 |
-| 1210 | Moderate | 7 | 7 | 6 | 6 | 6 | 6 | 5 |
-| 73 | Moderate | 8 | 8 | 8 | 8 | 8 | 8 | 7 |
+| 1228 | Intermediate | 4 | 4 | 4 | 4 | 5 | 5 | 4 |
+| 1214 | Intermediate | 5 | 5 | 5 | 5 | 4 | 2 | 8 |
+| 1274 | Intermediate | 6 | 6 | 7 | 7 | 7 | 7 | 6 |
+| 1210 | Intermediate | 7 | 7 | 6 | 6 | 6 | 6 | 5 |
+| 73 | Intermediate | 8 | 8 | 8 | 8 | 8 | 8 | 7 |
 | 12 | Sensitive | 9 | 9 | 10 | 10 | 9 | 10 | 9 |
 | 1219 | Sensitive | 10 | 10 | 11 | 12 | 11 | 11 | 10 |
 | 1110 | Sensitive | 11 | 11 | 9 | 9 | 10 | 9 | 11 |
 | 1218 | Sensitive | 12 | 12 | 12 | 11 | 12 | 13 | 13 |
 | 1235 | Sensitive | 13 | 13 | 13 | 13 | 13 | 12 | 12 |
 
-*注：抗旱等级根据D_conv值划分：Tolerant (Rank 1-4), Moderate (Rank 5-8), Sensitive (Rank 9-13)。*
+*注：抗旱等级根据D_conv值通过层次聚类划分：Tolerant (3个), Intermediate (5个), Sensitive (5个)。*
 
 ### 2.X.3.2 排名偏差分析
 
