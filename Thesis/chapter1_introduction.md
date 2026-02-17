@@ -69,7 +69,7 @@ OJIP 快速荧光诱导动力学技术的成熟为精细诊断光合损伤提供
 ### 1.3.2 研究内容
 
 **（1）水稻干旱胁迫多源光谱响应特征研究**
-选取具有代表性的籼稻品种，设置不同梯度的干旱胁迫试验。同步采集多光谱反射率（涵盖可见-近红外波段）、稳态荧光发射光谱（400-800 nm）以及 OJIP 快速叶绿素荧光动力学曲线。构建包含 $D_{conv}$（基于生理指标的综合抗旱指数）在内的真值标签体系。本部分内容将在第3章详细阐述。
+选取具有代表性的籼稻品种，设置不同梯度的干旱胁迫试验。同步采集多光谱反射率（涵盖可见-近红外波段）、稳态荧光发射光谱（400-800 nm）以及 OJIP 快速叶绿素荧光动力学曲线。构建包含 $D_{\text{conv}}$（基于生理指标的综合抗旱指数）在内的真值标签体系。本部分内容将在第3章详细阐述。
 
 **（2）基于多源光谱融合的抗旱性预测模型研究**
 构建"反射+静态荧光+动力学"的多源特征池。建立包含线性模型（PLSR, Ridge）、传统集成模型（Random Forest, CatBoost）和基础模型（TabPFN）的对比框架。重点考察 TabPFN 在免调参、小样本场景下的预测精度（$R^2$, RMSE）与排序能力（Spearman $\rho$）。本部分内容将在第4章详细阐述。
@@ -111,7 +111,7 @@ Dhindsa, R. S., et al. (1981). Leaf senescence: correlated with increased levels
 
 FAO. (2025). *World Food Situation*.
 
-Feng, L., et al. (2024). Multi-sensor data fusion for drought stress recognition in tomato. *Computers and Electronics in Agriculture*.
+Feng, L., Chen, S., Zhang, C., Zhang, Y., & He, Y. (2024). Multi-sensor fusion for crop drought stress detection using machine learning. *Computers and Electronics in Agriculture*, 218, 108693.
 
 Fernandez, G. C. (1992). Effective selection criteria for assessing plant stress tolerance.
 
@@ -147,7 +147,7 @@ Peñuelas, J., et al. (2011). Reflectance assessment of seasonal and annual chan
 
 Rouse, J. W., et al. (1974). Monitoring vegetation systems in the Great Plains with ERTS.
 
-Sabo, F., et al. (2025). From Rows to Yields: How Foundation Models for Tabular Data Simplify Crop Yield Prediction. *arXiv*.
+Sabo, F., et al. (2025). From Rows to Yields: How Foundation Models for Tabular Data Simplify Crop Yield Prediction. *arXiv preprint arXiv:2506.19046*.
 
 Schreiber, U., et al. (1986). Continuous recording of photochemical and non-photochemical chlorophyll fluorescence quenching. *Photosynthesis Research*.
 

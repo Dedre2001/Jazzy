@@ -54,4 +54,4 @@
 
 Feng, L., Chen, S., Zhang, C., Zhang, Y., & He, Y. (2024). Multi-sensor fusion for crop drought stress detection using machine learning. *Computers and Electronics in Agriculture*, 218, 108693.
 
-Sabo, F., Meroni, M., Waldner, F., & Rembold, F. (2025). From Rows to Yields: leveraging TabPFN for crop yield prediction with limited data. *arXiv preprint arXiv:2501.xxxxx*.
+Sabo, F., Meroni, M., Waldner, F., & Rembold, F. (2025). From Rows to Yields: How Foundation Models for Tabular Data Simplify Crop Yield Prediction. *arXiv preprint arXiv:2506.19046*.
