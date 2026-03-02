@@ -4,7 +4,11 @@
       "Bash(python:*)",
       "WebSearch",
       "Bash(python3:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "WebFetch(domain:www.researchgate.net)",
+      "WebFetch(domain:pmc.ncbi.nlm.nih.gov)",
+      "WebFetch(domain:agris.fao.org)"
     ]
   },
   "outputStyle": "Explanatory"

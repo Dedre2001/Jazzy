@@ -43,7 +43,7 @@ plt.rcParams['axes.unicode_minus'] = False
 
 FEATURE_GROUPS = {
     'Multi': [
-        'R460', 'R520', 'R580', 'R660', 'R710', 'R730', 'R760', 'R780', 'R810', 'R850', 'R900',
+        'R460', 'R520', 'R590', 'R660', 'R680', 'R710', 'R730', 'R780', 'R820', 'R850', 'R910',
         'VI_NDVI', 'VI_NDRE', 'VI_EVI', 'VI_SIPI', 'VI_PRI', 'VI_MTCI', 'VI_GNDVI', 'VI_NDWI'
     ],
     'Static': [

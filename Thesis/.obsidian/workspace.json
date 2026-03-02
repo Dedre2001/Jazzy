@@ -13,6 +13,20 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "chapter4_full_draft.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "chapter4_full_draft"
+            }
+          },
+          {
+            "id": "e6f6022011084e15",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "chapter3_full_draft.md",
                 "mode": "source",
                 "source": false
@@ -21,7 +35,8 @@
               "title": "chapter3_full_draft"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -113,12 +128,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "chapter3_full_draft.md",
+                "file": "chapter4_full_draft.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "chapter3_full_draft 的出链列表"
+              "title": "chapter4_full_draft 的出链列表"
             }
           },
           {
@@ -156,20 +171,21 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "chapter3_full_draft.md",
+                "file": "chapter4_full_draft.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "chapter3_full_draft 的大纲"
+              "title": "chapter4_full_draft 的大纲"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -182,24 +198,37 @@
       "bases:新建数据库": false
     }
   },
-  "active": "2a540a136b884bc7",
+  "active": "e6f6022011084e15",
   "lastOpenFiles": [
-    "目录.md.tmp.13188.1771339484660",
-    "chapter5_full_draft.md.tmp.13188.1771339470843",
-    "chapter5_full_draft.md.tmp.13188.1771339465757",
-    "chapter5_full_draft.md.tmp.13188.1771339454222",
-    "chapter5_full_draft.md.tmp.13188.1771339447798",
-    "目录.md.tmp.13188.1771339248812",
-    "目录.md",
-    "chapter1_introduction.md.tmp.13188.1771339053196",
-    "chapter5_full_draft.md",
+    "chapter3_full_draft.md.tmp.50000.1772447029752",
+    "chapter3_full_draft.md.tmp.50000.1772447019057",
+    "chapter3_full_draft.md.tmp.50000.1772447003496",
+    "chapter3_full_draft.md.tmp.50000.1772446968042",
+    "论文图片/Figure_3-5/features_40_nir_corrected_backup.csv",
+    "chapter3_full_draft.md.tmp.50000.1772445479820",
+    "chapter3_full_draft.md.tmp.50000.1772445465914",
+    "chapter3_full_draft.md.tmp.50000.1772445446374",
+    "chapter3_full_draft.md.tmp.50000.1772445202143",
+    "chapter3_full_draft.md.tmp.50000.1772445185796",
+    "chapter3_full_draft.md.tmp.50000.1772445176930",
     "chapter4_full_draft.md",
     "chapter3_full_draft.md",
-    "chapter6_conclusion.md",
+    "chapter5_full_draft.md",
     "chapter1_introduction.md",
-    "chapter5_full_draft.md.tmp.25668.1771079447110",
-    "chapter4_full_draft.md.tmp.25668.1771079438571",
-    "chapter1_introduction.md.tmp.25668.1771079430094",
-    "chapter6_conclusion.md.tmp.25668.1771079421028"
+    "论文图片/Figure_3-2/Figure_3-2_PCA_Biplot_Final.png",
+    "论文图片/Figure_3-1/Figure_3-1_LC_Stress_Final.png",
+    "论文图片/Figure_3-1/Figure_3-1_LC_Stress_Professional.png",
+    "chapter6_conclusion.md",
+    "论文图片/Figure_3-5c/Figure_3-5c_static_radar_LC.png",
+    "Full_Thesis_Draft.md",
+    "致谢.md",
+    "摘要.md",
+    "Figure_1-1_技术路线图.png",
+    "论文图片/Figure_3-2/Figure_3-2_pca_biplot.png",
+    "论文图片/Figure_3-7/Figure_3-7_correlation_heatmap.png",
+    "论文图片/Figure_3-6b/Figure_3-6b_ojip_radar.png",
+    "论文图片/Figure_3-6/Figure_3-6_ojip_curve.png",
+    "论文图片/Figure_3-5c/Figure_3-5c_static_radar.png",
+    "目录.md"
   ]
 }

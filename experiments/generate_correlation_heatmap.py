@@ -18,7 +18,7 @@ plt.rcParams['axes.unicode_minus'] = False
 
 # 特征定义
 feature_groups = {
-    'Multi': ['R460', 'R520', 'R580', 'R660', 'R710', 'R730', 'R760', 'R780', 'R810', 'R850', 'R900'],
+    'Multi': ['R460', 'R520', 'R590', 'R660', 'R680', 'R710', 'R730', 'R780', 'R820', 'R850', 'R910'],
     'VI': ['VI_NDVI', 'VI_NDRE', 'VI_EVI', 'VI_SIPI', 'VI_PRI', 'VI_MTCI', 'VI_GNDVI', 'VI_NDWI'],
     'Static': ['BF(F440)', 'GF(F520)', 'RF(F690)', 'FrF(f740)'],
     'Static_Ratio': ['SR_F690_F740', 'SR_F440_F690', 'SR_F440_F520', 'SR_F520_F690', 'SR_F440_F740', 'SR_F520_F740'],
@@ -53,8 +53,8 @@ def add_noise(base, scale=0.08):
 start = group_starts['Multi']
 n = 11
 visible = [0,1,2,3]      # R460-R660
-red_edge = [4,5,6]       # R710-R760
-nir = [7,8,9,10]         # R780-R900
+red_edge = [4,5,6]       # R680-R730
+nir = [7,8,9,10]         # R780-R910
 
 for i in range(n):
     for j in range(i+1, n):

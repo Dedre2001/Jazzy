@@ -1,0 +1,7 @@
+Variety,Category,Treatment,BF_F440,GF_F520,RF_F690,FrF_F740
+1252,Tolerant,CK1,0.78,0.62,1.28,1.62
+1252,Tolerant,D1,1.15,0.81,1.18,1.52
+1228,Intermediate,CK1,0.81,0.64,1.25,1.58
+1228,Intermediate,D1,1.02,0.78,1.05,1.35
+1235,Sensitive,CK1,0.85,0.68,1.21,1.52
+1235,Sensitive,D1,0.95,0.76,0.92,1.18

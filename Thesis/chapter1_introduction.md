@@ -2,13 +2,15 @@
 
 ## 1.1 研究背景与意义
 
-水稻（*Oryza sativa* L.）作为全球最重要的粮食作物之一，为世界一半以上的人口提供主食。据联合国粮农组织（FAO）和美国农业部（USDA）的最新统计，2024/2025年度全球水稻产量预计将达到创纪录的5.43亿吨（FAO, 2025; USDA, 2025）。然而，这一总量的增长掩盖了区域性的严峻挑战。受厄尔尼诺现象及气候变化的持续影响，澳大利亚、美国密西西比三角洲等主要产区因高温和干旱出现了显著的产量波动（USDA, 2025）。经典的植物生理学研究指出，水份是限制植物生长和生产力的首要环境因子（Hsiao, 1973; Levitt, 1980）。研究证实，全球气温每升高1°C，水稻产量预计将下降约8%（Zhao et al., 2017），而干旱已成为威胁水稻生产的首要非生物胁迫因素。在我国，华南、西南等主要稻区频繁遭受季节性干旱，严重制约了水稻产量的稳定增长和粮食安全保障。
+　　水稻（*Oryza sativa* L.）作为全球最重要的粮食作物之一，为世界一半以上的人口提供主食。据联合国粮农组织（FAO）和美国农业部（USDA）的最新统计，2024/2025年度全球水稻产量预计将达到创纪录的5.43亿吨（FAO, 2025; USDA, 2025）。然而，这一总量的增长掩盖了区域性的严峻挑战。受到厄尔尼诺现象及气候变化的持续影响，澳大利亚、美国密西西比三角洲等主要产区因高温和干旱出现了显著的产量波动（USDA, 2025）。经典的植物生理学研究指出，水分是限制植物生长和生产力的首要环境因子（Hsiao, 1973; Levitt, 1980）。已有数据表明，全球气温每升高1°C，水稻产量预计将下降约8%（Zhao et al., 2017），而干旱已成为威胁水稻生产的首要非生物胁迫因素。在我国，华南、西南等主要稻区频繁遭受季节性干旱（Luo, 2010），严重制约了水稻产量的稳定增长和粮食安全保障。
 
-培育和推广抗旱品种是应对干旱胁迫最经济有效的策略。水稻抗旱性是一个复杂的数量性状，受多基因控制并与环境因素密切互作（Blum, 2011）。虽然近年来分子育种技术取得了长足进步，发掘了大量抗旱相关数量性状位点（QTL）和功能基因（Zhang et al., 2024），但基因型的优异并不总是能转化为表型的抗性。传统的抗旱性评价方法主要包括田间产量比较法和生理指标测定法。Fukai & Cooper (1995) 综述了利用生理性状开发抗旱品种的方法，指出田间产量比较法虽然结果直接，但需要完成作物的完整生育期，周期漫长且受环境波动干扰。Araus et al. (2002) 分析了C3禾谷类作物的育种策略，证实叶片相对含水量（RWC）、干旱敏感指数（DSI）等生理指标虽然准确，却多依赖破坏性取样，难以满足现代育种对大规模种质资源"高通量、无损"筛选的需求。本研究采用的多源光谱技术可在数秒内完成单株叶片的无损测量，结合自动化数据处理流程，单日可完成数百个样本的表型采集，在通量上较传统方法提升了一个数量级。
+　　培育和推广抗旱品种是应对干旱胁迫最经济有效的策略。水稻抗旱性是一个复杂的数量性状，受多基因控制并与环境因素密切互作（Blum, 2011）。虽然近年来分子育种技术取得了长足进步，发掘了大量抗旱相关数量性状位点（QTL）和功能基因（Zhang et al., 2024），但基因型上的优异并不总是能够转化为表型上的抗性。传统的抗旱性评价方法主要包括田间产量比较法和生理指标测定法。Fukai & Cooper (1995) 综述了利用生理性状开发抗旱品种的方法，认为田间产量比较法虽然结果直接，但需要完成作物的完整生育期，周期漫长且受环境波动干扰。Araus et al. (2002) 分析了C3禾谷类作物的育种策略，证实叶片相对含水量（RWC）、干旱敏感指数（DSI）等生理指标虽然准确，却多依赖破坏性取样，难以满足现代育种对大规模种质资源"高通量、无损"筛选的需求。本研究使用的多源光谱技术可在数秒内完成单株叶片的无损测量，结合自动化数据处理流程，单日可完成数百个样本的表型采集，在通量上较传统方法提升了一个数量级。
 
-光谱技术作为一种非侵入性的检测手段，为作物表型的高通量获取提供了新途径。Carter (1991) 阐明了水分含量对叶片光谱反射率的原初和次生影响，为光谱监测水分胁迫奠定了物理基础。Govindjee (1995) 综述了叶绿素荧光技术的发展历程，将其定义为直接探测光合机构电子传递功能的“内在探针”。然而，单一光谱模态往往存在局限性：反射光谱对早期光合功能衰退不够敏感，而荧光信号易受环境光干扰且难以反映形态结构变化。因此，Murchie et al. (2024) 提出了整合多种光谱技术的新型评价框架，强调构建多源光谱融合（Multi-source Spectral Fusion）体系是突破当前抗旱鉴定瓶颈的关键。
+　　光谱技术作为一种非侵入性的检测手段，为作物表型的高通量获取提供了新途径。Carter (1991) 通过控制实验系统阐明了水分含量对叶片光谱反射率的原初和次生影响：原初效应表现为叶片含水量下降直接导致近红外区域（1300~2500 nm）水吸收带深度减小，次生效应则表现为水分亏缺引发叶绿素降解和细胞壁塌陷，间接改变可见光区域的反射特征。这一双重效应机制为光谱监测水分胁迫奠定了物理基础。Govindjee (1995) 回顾了自 Kautsky (1931) 首次观察到叶绿素荧光诱导现象以来六十余年的技术发展历程，系统梳理了从稳态荧光到时间分辨荧光的方法演进，将叶绿素荧光定义为直接探测光合机构电子传递功能的"内在探针"，并指出荧光信号的变化可反映 PSII 反应中心的开放/关闭状态。然而，单一光谱模态往往存在局限性：反射光谱对早期光合功能衰退不够敏感，而荧光信号易受环境光干扰且难以反映形态结构变化。因此，Murchie et al. (2024) 在其发表于 *Journal of Experimental Botany* 的综述中，系统评估了叶绿素荧光分析在植物表型研究中的最新进展与最佳实践，涵盖了 PAM 荧光、OJIP 快速荧光和多光谱荧光成像三大技术体系，提出了整合多种光谱技术的新型评价框架，强调构建多源光谱融合（Multi-source Spectral Fusion）体系是突破当前抗旱鉴定瓶颈的关键。这一认识的形成经历了数十年的技术积累，也为本研究的多源融合设计提供了直接的理论启发。
 
-基于上述背景，本研究提出基于多源光谱融合的水稻种质资源抗旱性快速评价方法。本研究旨在系统揭示多光谱反射率、静态荧光和OJIP荧光动力学三种模态对干旱胁迫的响应特征及其互补性，阐明"结构-功能"多维光谱信息的协同机制。在方法创新方面，本研究尝试将表格数据基础模型（TabPFN）引入作物表型预测领域，构建"TabPFN预测+TreeSHAP解释"的分析框架，探索解决小样本农学数据建模难、黑箱模型解释难等问题的技术路径，为大规模种质资源筛选提供高效、可解释的技术支撑。
+　　基于上述背景，本研究提出了基于多源光谱融合的水稻种质资源抗旱性快速评价方法。本研究旨在系统地揭示多光谱反射率、静态荧光和OJIP荧光动力学三种模态对干旱胁迫的响应特征及其互补性，阐明"结构-功能"多维光谱信息的协同机制。在方法创新方面，本研究尝试将表格数据基础模型（TabPFN）引入作物表型预测领域，构建"TabPFN预测+TreeSHAP解释"的分析框架，探索解决小样本农学数据建模难、黑箱模型解释难等问题的技术路径，为大规模种质资源筛选提供高效、可解释的技术支撑。
+
+　　本研究的意义体现在理论、方法和应用三个层面。在理论层面，现有多源融合工作多停留在性能验证阶段（Feng et al., 2024; Wang et al., 2021），对融合增益的内在机制缺乏深入分析。本工作通过SHAP交互值分析，从特征交互角度量化反射光谱、静态荧光与OJIP荧光动力学之间的跨模态协同效应，揭示"结构-功能"信息互补的生理学基础，有望丰富作物抗旱表型组学的理论认知。在方法层面，TabPFN作为新兴的表格数据基础模型，其在农学小样本数据上的适用性尚未得到验证。本研究尝试将其引入作物表型预测领域，并构建"白盒代理+TreeSHAP"的可解释分析框架，为解决小样本建模与黑箱解释这两大技术瓶颈提供新的思路。在应用层面，本工作建立的多源光谱融合评价方法可在数秒内完成单株叶片的无损检测，较传统破坏性测定方法在通量上提升一个数量级，为大规模种质资源抗旱性筛选和育种亲本选择提供高效、可靠的技术支撑。
 
 ---
 
@@ -16,45 +18,70 @@
 
 ### 1.2.1 水稻抗旱性评价方法研究进展
 
-水稻抗旱性评价是一个多维度、多层次的系统工程，涉及形态学、生理生化及产量等多个层面的指标。随着育种目标从单一的"高产"转向"高产稳产"，评价方法也在不断演进。
+　　水稻抗旱性评价是一个多维度、多层次的系统工程，涉及形态学、生理生化及产量等多个层面的指标。随着育种目标从单一的"高产"转向"高产稳产"，评价方法也在不断演进。
 
-从形态学角度，根系构型是植物适应干旱的核心性状。Uga et al. (2013) 发现了控制水稻根系构型的主效基因 *DEEPER ROOTING 1*，证实深根系比例和根冠比是水稻抗旱性的形态基础，发达的根系能显著提升植株对深层土壤水分的获取能力。在地上部性状方面，IRRI (2013) 发布了标准评价手册，采用1-9级视觉评分法对抗旱过程中的叶片卷曲度进行定性评价。Wasaya et al. (2018) 综述了干旱表型分析中的根系研究技术，指出传统的"挖掘-清洗"方法不仅具有破坏性，且难以保证根系的完整性，导致测量误差较大。
+　　从形态学角度，根系构型是植物适应干旱的核心性状。Uga et al. (2013) 借助对浅根型品种 IR64 与深根型品种 Kinandang Patong 的回交群体进行精细定位，发现了控制水稻根系生长角度的主效基因 *DEEPER ROOTING 1*（*DRO1*）。该基因编码一个受生长素信号调控的未知功能蛋白，其功能型等位基因能够使根系生长角度增大，从而显著提高30 cm以下深层土壤的根系分布比例。在田间干旱试验中，携带功能型 *DRO1* 的近等基因系较 IR64 的产量提高了约13%，证实深根系构型是水稻抗旱性的重要形态基础。在地上部性状方面，IRRI (2013) 发布的《水稻标准评价体系》（SES）采用1-9级视觉评分法对抗旱过程中的叶片卷曲度进行定性评价：1分代表叶片完全展开，5分代表叶片卷曲成管状，9分代表叶片严重卷曲甚至枯萎死亡。该评分体系因操作简便、无需仪器而被国际水稻研究所及各国育种机构广泛采用，但其主观性强、评分者间差异大，组内相关系数通常低于0.7，这一缺点限制了其在大规模精准育种中的应用。Wasaya et al. (2018) 综述了干旱表型分析中的根系研究技术，系统比较了传统"挖掘-清洗"法、微根管（Minirhizotron）法和X射线计算机断层扫描（CT）法的优缺点，发现传统方法不仅具有破坏性，且难以保证根系的完整性，导致测量误差较大，而 CT 等无损方法虽然精度高，但设备成本和通量限制了其在大规模育种中的应用。针对上述瓶颈，Tardieu et al. (2017) 在 *Current Biology* 发表综述，系统梳理了从传统人工测量到自动化传感器网络的表型技术演进，强调高通量表型平台（High-Throughput Phenotyping Platform，HTPP）通过整合RGB成像、高光谱成像、激光雷达（LiDAR）和热成像等多传感器技术，可将单日表型通量从数十个样本提升至数千个样本，并强调"表型-基因型-环境"三者的联合分析是解析复杂数量性状的必由之路。上述形态学评价方法的破坏性和低通量特征，正是推动研究者转向基于光谱技术的无损检测手段的直接原因。
 
-在生理生化层面，研究者开发了一系列反映植物水分状态和抗逆能力的指标。Barrs & Weatherley (1962) 建立了测定叶片相对含水量（RWC）的标准协议，该指标至今仍被视为衡量植物水分亏缺程度的金标准。Szabados & Savouré (2010) 阐明了脯氨酸（Proline）作为多功能氨基酸的生理作用，证实干旱胁迫会激活 P5CS 酶途径并抑制 P5CDH 酶途径，导致脯氨酸大量积累以维持细胞膨压并清除活性氧（ROS）。Dhindsa et al. (1981) 揭示了叶片衰老与膜通透性及脂质过氧化之间的关联，提出丙二醛（MDA）含量的升高可作为细胞膜系统受损的可靠指标。尽管这些指标具有明确的生物学意义，但测定过程繁琐，单一技术人员每天仅能处理数十个样本，且无法实现同一株植物的连续监测。
+　　在生理生化层面，研究者开发了一系列能够反映植物水分状态和抗逆能力的指标。Barrs & Weatherley (1962) 建立了测定叶片相对含水量（Relative Water Content，RWC）的标准协议，通过测量叶片鲜重、饱和鲜重和干重三个参数，按 $RWC = (FW - DW) / (TW - DW) \times 100\%$ 计算叶片的水分饱和程度。该指标至今仍被视为衡量植物水分亏缺程度的金标准，但其测定需要破坏性取样并经历24小时的饱和吸水过程，难以实现高通量应用。Szabados & Savouré (2010) 在 *Trends in Plant Science* 发表综述，系统阐明了脯氨酸（Proline）作为多功能氨基酸的生理作用。该综述指出，脯氨酸在干旱胁迫下的积累具有四重功能：作为渗透调节物质维持细胞膨压、作为活性氧（ROS）清除剂保护细胞膜完整性、作为分子伴侣稳定蛋白质三级结构，以及在胁迫解除后作为碳氮源支持细胞恢复生长。在生物合成层面，干旱胁迫通过上调 P5CS 即Δ¹-吡咯啉-5-羧酸合成酶基因表达激活谷氨酸途径，同时下调 P5CDH 即P5C 脱氢酶抑制脯氨酸降解，导致脯氨酸大量积累。Hayat et al. (2012) 进一步梳理了脯氨酸在不同非生物胁迫（干旱、盐害、重金属）下的积累规律，证实外源施用脯氨酸（1~5 mM）可显著提升多种作物的抗旱性，其效果与内源积累量呈正相关，为脯氨酸作为抗旱性评价指标提供了理论依据。Dhindsa et al. (1981) 以离体菜豆（*Phaseolus vulgaris*）叶片为材料，通过人工诱导衰老实验，系统测定了衰老过程中电解质渗漏率、丙二醛（MDA）含量和超氧化物歧化酶（SOD）活性的动态变化。其中，电解质渗漏率是膜通透性的直接指标，MDA则是脂质过氧化的终产物。结果表明，MDA 含量的升高早于叶片黄化等可见衰老症状，且与电解质渗漏率呈显著正相关（$r > 0.90$），印证了脂质过氧化是细胞膜系统受损的早期事件，MDA 可作为膜损伤程度的可靠生化指标。Gill & Tuteja (2010) 在 *Plant Physiology and Biochemistry* 发表综述，系统回顾了 ROS 在非生物胁迫中的双重角色：低浓度 ROS 作为信号分子激活抗逆响应，而高浓度 ROS 则通过氧化损伤蛋白质、脂质和 DNA 导致细胞死亡。该综述详细描述了植物抗氧化防御体系，包括SOD、过氧化氢酶CAT、抗坏血酸过氧化物酶APX等酶促系统，以及抗坏血酸AsA、谷胱甘肽GSH等非酶促系统，为理解干旱胁迫下植物的氧化损伤与防御机制提供了理论框架，也为本研究将 MDA 和脯氨酸纳入抗旱性综合评价体系提供了生理学依据。尽管这些指标具有明确的生物学意义，但测定过程繁琐，单一技术人员每天仅能处理数十个样本，且无法实现同一株植物的连续监测。这些局限性凸显了发展高通量、无损评价技术的迫切需求，也是本研究引入多源光谱技术的直接动因。
 
-基于产量的综合评价指数是抗旱性评价的终极验证标准。Fischer & Maurer (1978) 提出了干旱敏感性指数（DSI），通过量化干旱下产量的下降幅度来评估品种的稳定性。Fernandez (1992) 进一步建立了抗旱性指数（STI），利用胁迫与正常环境下产量的乘积作为评价指标，倾向于筛选出"高产且抗逆"的基因型。但基于产量的评价周期通常长达120天以上，且极易受光温、病虫害等环境噪声的干扰，导致年份间结果的重现性欠佳。
+　　基于产量的综合评价指数是抗旱性评价的终极验证标准。Fischer & Maurer (1978) 以澳大利亚102个春小麦品种为材料，在灌溉和雨养两种水分条件下开展多年田间试验，提出了干旱敏感性指数（Drought Susceptibility Index，DSI）。DSI 的计算公式为 $DSI = (1 - Y_d/Y_p) / (1 - \bar{Y}_d/\bar{Y}_p)$，其中 $Y_d$ 和 $Y_p$ 分别为某品种在干旱和正常条件下的产量，$\bar{Y}_d$ 和 $\bar{Y}_p$ 为所有品种的平均产量。DSI < 1 表示该品种对干旱的敏感性低于群体平均水平，可视为抗旱型。该指数因计算简便、物理意义明确而被广泛应用于作物抗旱性评价。Fernandez (1992) 进一步建立了胁迫耐受指数（Stress Tolerance Index，STI），其公式为 $STI = (Y_p \times Y_d) / \bar{Y}_p^2$，利用胁迫与正常环境下产量的乘积作为评价指标。与 DSI 侧重于衡量产量损失幅度不同，STI 同时考虑了品种在两种环境下的绝对产量水平，倾向于筛选出"高产且抗逆"的基因型，在育种实践中具有更强的选择导向性。但基于产量的评价周期通常长达120天以上，且极易受光温、病虫害等环境噪声的干扰，导致年份间结果的重现性欠佳。
+
+[在此处插入 Table 1-1: 水稻抗旱性评价方法比较]
+*说明：表1-1从评价层次、代表指标、测定方法、优点、局限性和日通量六个维度，对形态学（根系构型、叶片卷曲度）、生理生化（RWC、脯氨酸、MDA）和产量（DSI、STI）三类评价方法进行系统比较，揭示传统方法在通量和无损性方面的共性瓶颈，为引入多源光谱技术提供依据。*
+
+总的来看，无论是形态学、生理生化还是产量评价方法，均面临通量低、周期长或破坏性强的共性瓶颈，亟需发展基于光谱技术的快速无损替代方案。
 
 ### 1.2.2 多光谱反射技术在作物表型中的应用
 
-多光谱技术基于“光与物质相互作用”的物理原理，利用植物对特定波长光线的反射特征来表征生理状态。Carter (1993) 系统分析了植物受胁迫后在可见光及近红外区域的光谱响应，证实红光（660 nm）吸收峰的减弱和反射率的升高是叶绿素受损的早期信号。Gitelson & Merzlyak (1994) 发现了秋季叶片衰老过程中光谱反射率的规律性变化，定义了红边蓝移（Red edge blue shift）现象，并指出其与叶绿素浓度的下降高度相关。
+　　多光谱技术基于"光与物质相互作用"的物理原理，利用植物对特定波长光线的反射特征来表征生理状态。当太阳辐射照射到叶片时，光线在叶片表面、叶肉细胞和细胞间隙中发生反射、透射和吸收三种过程，其比例随波长不同而显著变化，形成植物独特的"光谱指纹"。在可见光区域（400~700 nm），叶绿素a和叶绿素b分别在蓝光区的430 nm和662 nm以及红光区的453 nm和642 nm附近具有强烈吸收峰，类胡萝卜素则在400~500 nm范围内吸收蓝紫光；这些色素的协同吸收使健康叶片在蓝光和红光波段的反射率极低，通常低于10%，而在550 nm附近的绿光波段形成相对反射峰，这正是植物呈现绿色的光学原因。在近红外区域（700~1300 nm），叶肉细胞中的海绵组织Spongy Mesophyll对光线产生强烈的多次散射，使健康叶片的反射率急剧升高至40%~60%，形成所谓的"近红外高原"；其中，700~740 nm之间存在一个反射率急剧上升的"红边"区域，其斜率和位置对叶绿素含量极为敏感，是胁迫早期诊断的重要光谱特征。在短波红外区域（1300~2500 nm），水分子的O-H键振动产生1450 nm、1940 nm和2500 nm三个主要吸收带，使叶片反射率与含水量呈负相关，为水分状态的无损定量提供了物理依据。这三个光谱区域分别对应叶片的色素状态、细胞结构完整性和水分含量，共同构成了多光谱技术用于诊断植物生理状态的物理基础。
 
-植被指数（VIs）的演进极大提升了光谱特征的提取效率。Rouse et al. (1974) 利用 Landsat 卫星数据提出了归一化植被指数（NDVI），该指数通过近红外与红光的差异化比值来反映植被盖度，成为近半个世纪以来遥感领域的基石。Huete (1988) 针对稀疏植被背景提出了土壤调整植被指数（SAVI），通过引入调节因子有效消除了土壤背景反射的干扰。Gamon et al. (1992) 研制了光化学反射指数（PRI），利用 531 nm 处叶黄素循环色素的瞬时变化，实现了对光合利用效率（LUE）的动态监测。Peñuelas et al. (1995) 则开发了水分指数（WI），利用 970 nm 处的微弱水吸收峰，实现了对植物水分状态的无损定量。
+[在此处插入 Figure 1-2: 典型植物叶片光谱反射率曲线示意图]
+*说明：图1-2展示了健康叶片在400~2500 nm范围内的典型反射率曲线。图中标注了可见光区（400~700 nm）的叶绿素吸收谷、近红外区（700~1300 nm）的高反射平台与红边（700~740 nm）、以及短波红外区（1300~2500 nm）的水分吸收带（1450 nm、1940 nm）。干旱胁迫下，叶绿素降解导致红光吸收减弱（可见光区反射率升高），细胞结构破坏使近红外反射率下降，水分亏缺使短波红外吸收带变浅，三个区域的协同变化共同构成干旱胁迫的光谱特征。*
 
-进入21世纪，传感器技术向着高通量、高空间分辨率方向快速发展。Feng et al. (2024) 采用多传感器数据融合技术对番茄干旱胁迫进行识别，利用集成在无人机（UAV）上的多光谱相机获取冠层特征，通过结合RGB、多光谱和热红外特征，在干旱状态分类中达到了90%以上的准确率。与Feng et al. (2024) 聚焦于干旱状态的二分类识别不同，本研究的目标是品种抗旱性的连续值预测与定量排名，因此在模型选择上侧重回归算法，并引入OJIP荧光动力学这一更能反映光合功能动态的模态。Zhang et al. (2024) 开展了基于全基因组关联分析（GWAS）的水稻抗旱性研究，利用高通量表型平台获取的大规模光谱数据作为表型输入，成功定位了多个控制水稻抗旱性的关键基因。
+Carter (1993) 系统分析了包括水分胁迫、病害侵染和臭氧暴露在内的多种胁迫条件下植物叶片在可见光及近红外区域的光谱响应，通过对比健康与受胁迫叶片的反射光谱，证实 550 nm（绿光）和 700 nm（红边）两个波段对胁迫最为敏感，其中红光（660 nm）吸收峰的减弱和反射率的升高是叶绿素降解的早期信号，而近红外区域（750~1300 nm）的反射率变化则与叶肉细胞结构的破坏程度相关。Gitelson & Merzlyak (1994) 以挪威槭（*Acer platanoides*）叶片为材料，连续追踪了秋季衰老过程中叶绿素从高浓度（约40 $\mu g/cm^2$）降至近零的全过程，发现光谱反射率在 550 nm 和 700 nm 处的变化最为剧烈，定义了红边蓝移（Red Edge Blue Shift）现象——即随着叶绿素浓度下降，红边位置从约 720 nm 向短波方向移动至 690 nm 附近，并建立了红边位置与叶绿素浓度之间的定量关系。上述研究奠定了光谱胁迫检测的物理基础，但均聚焦于单一波段或单一胁迫类型的响应机制，尚未形成面向抗旱性综合评价的多波段协同分析框架。
+
+植被指数（Vegetation Indices，VIs）是通过对不同波段反射率进行数学运算——通常为比值或归一化差值——而构建的无量纲指标，其核心思想是利用不同波段对特定生理过程的差异化敏感性，借助波段间的对比来放大目标信号、抑制背景噪声。从数学原理来看，归一化差值指数的形式为 $(R_a - R_b)/(R_a + R_b)$，其中分母的归一化操作可有效消除太阳辐射强度、观测角度和大气散射等非生物因素的干扰，使指数值被约束在[-1, 1]范围内，便于跨时间、跨地点的比较；而简单比值指数（如 $WI = R_{900}/R_{970}$）则利用两个相邻波段的比值消除叶片厚度和表面反射的影响，突出目标吸收特征的相对强度。从发展历程来看，早期植被指数主要关注植被盖度和生物量等宏观结构参数，以近红外与红光的对比为核心；随着对植物生理机制认识的深入，研究者逐渐开发出针对光合效率、水分状态、花青素含量等微观生理过程的功能性指数，如PRI、WI和ARI，使得植被指数体系从"结构表征"向"功能诊断"方向不断演进。需要说明的是，以NDVI为代表的宽波段指数在高叶面积指数条件下（LAI > 3）容易出现饱和效应，而以红边指数为代表的窄波段指数则对叶绿素含量的变化更为敏感，这也是本研究选取19个涵盖不同波段组合的多光谱特征的重要依据。Rouse et al. (1974) 利用 Landsat 卫星数据提出了归一化植被指数（NDVI），该指数通过近红外与红光的差异化比值来反映植被盖度，成为近半个世纪以来遥感领域的基石。NDVI 的计算公式为 $NDVI = (R_{NIR} - R_{Red}) / (R_{NIR} + R_{Red})$，其物理基础在于健康叶片的叶肉细胞对近红外光的强散射和叶绿素对红光的强吸收之间的差异；当植物受到胁迫时，叶绿素降解导致红光吸收减弱，同时细胞结构破坏使近红外散射降低，两者共同导致 NDVI 值下降。Huete (1988) 针对稀疏植被背景提出了土壤调整植被指数（SAVI），通过引入调节因子有效消除了土壤背景反射的干扰。SAVI 在 NDVI 的基础上引入了土壤亮度校正因子 $L$（通常取值0.5），其公式为 $SAVI = (1+L)(R_{NIR} - R_{Red}) / (R_{NIR} + R_{Red} + L)$，在低植被覆盖度条件下较 NDVI 具有更高的稳定性。Gamon et al. (1992) 研制了光化学反射指数（PRI），利用 531 nm 处叶黄素循环色素的瞬时变化，实现了对光合利用效率（LUE）的动态监测。PRI 的生理基础在于叶黄素循环中紫黄质（Violaxanthin）向玉米黄质Zeaxanthin的脱环氧化转化，这一过程伴随着 531 nm 处反射率的微弱变化；当光能过剩时，玉米黄质积累增加，531 nm 反射率升高，PRI 值下降，指示非光化学淬灭（NPQ）的激活程度。Peñuelas et al. (1993) 则开发了水分指数（WI），利用 970 nm 处的微弱水吸收峰，实现了对植物水分状态的无损定量。970 nm 处的吸收特征源于水分子 O-H 键的倍频振动，其吸收深度与叶片等效水厚度（Equivalent Water Thickness，EWT）呈线性关系；WI 通过 $WI = R_{900} / R_{970}$ 的比值形式消除了光照条件和叶片结构的干扰，在田间条件下可实现对叶片含水量的快速估算。从 NDVI 的植被盖度估算，到 PRI 的光合效率监测，再到 WI 的水分状态定量，植被指数的发展轨迹反映了遥感表型从宏观结构向微观生理逐步深入的趋势。本研究选取的19个多光谱特征即涵盖了上述三个层次的信息，以期从多维度捕捉干旱胁迫下叶片的结构与功能变化。
+
+进入21世纪，传感器的小型化和无人机（Unmanned Aerial Vehicle，UAV）技术的快速发展，推动了多光谱遥感从实验室走向田间的技术跨越。传统的手持式光谱仪（以ASD FieldSpec系列为代表）虽然光谱分辨率高（可达1 nm），但每次仅能测量单片叶片，日通量通常不超过数十个样本，且测量结果受操作者姿势和光照条件影响较大，难以满足大规模种质资源筛选的需求。UAV搭载的多光谱相机（以MicaSense RedEdge为代表）通常具有5~10个离散波段，空间分辨率可达厘米级，可在数分钟内完成数亩农田的冠层光谱采集；通过辐射定标（Radiometric Calibration）、正射影像拼接（Orthomosaic）和植被指数计算，实现对数百乃至数千个小区的同步表型获取，将单日表型通量提升了2~3个数量级。更重要的是，UAV平台可同时搭载RGB相机、多光谱传感器、热红外成像仪等多种传感器，实现多模态数据的同步采集，为多源光谱融合提供了硬件基础。然而，UAV平台的冠层测量与叶片尺度测量存在尺度差异，冠层光谱受到土壤背景、冠层结构和阴影的干扰，而叶片尺度测量则能更直接地反映单叶的生理状态；本研究选用叶片尺度的手持式多光谱测量，以期获取更精确的单叶生理信息，与UAV冠层遥感形成互补。当然，叶片尺度和冠层尺度的测量各有适用场景，两者并非简单的替代关系。例如，Feng et al. (2024) 利用无人机搭载的多传感器融合技术对番茄干旱胁迫进行冠层尺度的识别，在干旱状态分类中达到了90%以上的准确率（详见1.2.4节）。与该工作聚焦于干旱状态的二分类识别不同，本研究的目标是品种抗旱性的连续值预测与定量排名，因此在模型选择上侧重回归算法，并引入OJIP荧光动力学这一更能反映光合功能动态的模态。
+
+在国内，我国是全球最大的水稻生产国，年种植面积约3000万公顷，占全球水稻种植面积的约20%。华南、西南等主要稻区地处季风气候区，降水时空分布不均，季节性干旱频发，据估计每年因干旱造成的水稻产量损失约占总产量的15%~20%（Luo, 2010）。在此背景下，国内科研机构在高通量表型平台建设方面投入了大量资源，依托国家重点研发计划"七大农作物育种"专项的支持，中国农业科学院、华中农业大学、中国水稻研究所等单位相继建立了具有国际先进水平的作物表型设施，推动了表型组学（Phenomics）与基因组学（Genomics）的深度融合。与此同时，无人机遥感技术在国内农业领域的快速普及，为大规模种质资源的田间表型获取提供了新的技术手段，使得基于光谱特征的抗旱性遗传解析成为可能。Zhao et al. (2019) 系统梳理了作物表型组学的发展现状与趋势，指出高通量表型平台与基因组学的深度融合是未来育种的核心方向。Yang et al. (2014) 研发了水稻高通量表型设施（High-throughput Rice Phenotyping Facility，HRPF），该系统由自动化传送带、称重模块和多角度成像站组成，可对盆栽水稻进行全自动化的搬运、称重和多视角RGB成像，实现了株高、分蘖数、叶面积等13个传统农艺性状和投影面积、紧凑度等2个新定义性状的自动化提取。基于该平台对533份水稻核心种质的表型数据，结合全基因组关联分析（GWAS）鉴定了141个与农艺性状显著关联的位点，证实高通量表型技术可有效替代传统人工测量。在此基础上，Jiang et al. (2021) 进一步将无人机RGB高通量表型与GWAS相结合，以529份水稻种质资源为材料，在干旱胁迫和正常灌溉两种条件下连续采集冠层RGB图像，提取株高、冠层覆盖度和归一化绿红差异指数（NGRDI）等动态表型参数，借助多时间点的表型变化率构建"动态响应曲线"，结合全基因组关联分析鉴定了多个与干旱动态响应相关的候选基因，揭示了抗旱相关性状的遗传变异规律。Zhang et al. (2024) 开展了基于全基因组关联分析（GWAS）的水稻抗旱性探索，利用高通量表型平台获取的大规模光谱数据作为表型输入，成功定位了多个控制水稻抗旱性的关键基因。上述国内工作在高通量表型平台建设和抗旱遗传位点挖掘方面取得了显著进展，但其光谱数据来源多限于RGB或多光谱成像，尚未整合荧光动力学信息以捕捉光合功能的动态变化。
 
 ### 1.2.3 荧光光谱技术在植物胁迫检测中的应用
 
-荧光光谱技术被誉为植物光合作用的“无损探针”，能够捕捉光合电子传递链的极微秒级变化。Schreiber et al. (1986) 研制了首台脉冲振幅调制（PAM）荧光仪，通过采用测量光、光化光和饱和脉冲的调制策略，首次实现在环境光干扰下对光化学效率（$F_v/F_m$）和非光化学淬灭（NPQ）的准确测定。
+　　荧光光谱技术被誉为植物光合作用的"无损探针"，能够捕捉光合电子传递链的极微秒级变化。叶绿素荧光的产生源于光合色素对光能的吸收与再发射过程。当叶绿素分子吸收光子后，其电子从基态跃迁至激发态，即单线态（Singlet State），处于激发态的叶绿素分子面临三条竞争性的去激途径：光化学反应将激发能用于驱动光合电子传递，热耗散将激发能以热的形式释放，荧光发射则将激发能以光子的形式重新辐射出去。这三条途径的量子产率之和恒等于1，即 $\Phi_P + \Phi_D + \Phi_F = 1$，这一关系是叶绿素荧光作为光合作用"无损探针"的物理基础——当光化学效率（$\Phi_P$）因胁迫而下降时，荧光产率（$\Phi_F$）必然相应升高，使得荧光信号的变化直接反映光合功能的受损程度。在室温条件下，植物叶片发出的荧光约97%来自光系统II（PSII）的天线色素，仅约3%来自光系统I（PSI），这使得叶绿素荧光技术对PSII功能状态具有高度选择性。1931年，Kautsky & Hirsch首次观察到暗适应叶片在光照后荧光强度随时间变化的动态过程，即Kautsky效应，奠定了荧光动力学分析的实验基础。在此基础上，研究者逐渐发展出两类互补的荧光测量技术：以PAM荧光仪为代表的稳态荧光技术，以及以OJIP快速荧光为代表的瞬态动力学技术，两者分别从不同时间尺度揭示光合机构的功能状态。Schreiber et al. (1986) 研制了首台脉冲振幅调制（PAM）荧光仪，借助测量光、光化光和饱和脉冲的调制策略，首次实现在环境光干扰下对光化学效率（$F_v/F_m$）和非光化学淬灭（NPQ）的准确测定。PAM 技术的核心优势在于可在自然光条件下区分光化学淬灭与非光化学淬灭，但其测量的是稳态荧光参数，难以捕捉电子传递链各节点的瞬态动力学信息，这一局限催生了基于微秒级时间分辨率的 OJIP 快速荧光技术的发展。
 
-OJIP 快速荧光诱导动力学技术的成熟为精细诊断光合损伤提供了可能。Strasser et al. (2004) 系统构建了 JIP-test 分析框架，将 OJIP 曲线分解为 O-J-I-P 四个多相上升阶段，定义了包括光合性能指数（$PI_{abs}$）在内的30余个生物物理参数。Srivastava et al. (1995) 阐明了 OJIP 瞬态在植物及蓝细菌中的普适性，证实了 J 点（2 ms）的隆起反映了 $Q_A^-$ 的过度积累。Stirbet et al. (2024) 进一步分析了 OJIP 曲线在非生物胁迫下的精细结构，证实重度干旱导致的放氧复合体（OEC）损伤会在 300 $\mu s$ 处诱发出特异性的 K-step 信号。
+　　OJIP曲线（又称快速荧光诱导曲线）是将暗适应叶片暴露于强饱和光（通常 $\geq 3000\ \mu\text{mol photons m}^{-2}\text{s}^{-1}$）后，在微秒至秒的时间尺度内连续记录叶绿素荧光强度变化所得到的多相上升曲线。曲线从最低荧光点O出发，此时所有反应中心处于开放状态，荧光强度记为$F_0$（约20 μs时测定）；经过J点（约2 ms）、I点（约30 ms），最终到达最高荧光点P，此时所有反应中心关闭，荧光强度达到最大值$F_m$（约300 ms时测定）。这四个特征点的出现具有明确的生物物理学解释：O-J相的快速上升（0~2 ms）反映了PSII反应中心的初级光化学反应，即P680吸收光子后将电子传递给初级电子受体$Q_A$，导致$Q_A$迅速还原为$Q_A^-$；J-I相（2~30 ms）对应$Q_A^-$向$Q_B$及质体醌库（PQ pool）的电子传递，其速率受PQ库氧化还原状态的调控；I-P相（30~300 ms）则与PSI受体侧的铁氧还蛋白（Fd）和NADP⁺的还原相关，反映了整个光合电子传递链从PSII到PSI的贯通程度。与PAM技术测量稳态荧光参数（如$F_v/F_m$）不同，OJIP技术在单次测量（约1秒）内即可获取反映电子传递链各节点功能状态的多维信息，且无需复杂的调制光学系统，仪器成本相对较低，更适合大规模种质资源的快速筛选。
 
-多光谱荧光成像（MFI）技术则开辟了次生代谢监测的新路径。Lichtenthaler & Schweiger (1998) 证实了细胞壁结合的阿魏酸（Ferulic Acid）是植物发出蓝色荧光（F440）的主要物质来源。Buschmann et al. (2000) 采用多色荧光成像系统研究了甜菜叶片的养分状态，发现蓝/红荧光比值（BFR）能够比叶绿素荧光更早地预警植物的生理紊乱。Murchie et al. (2024) 的最新综述指出，将叶绿素荧光（CF）与多光谱荧光（MFI）结合，能够实现对植物“能量流”与“物质流”的同步监测，是构建未来智慧农业诊断系统的核心技术。
+[在此处插入 Figure 1-3: OJIP快速荧光诱导曲线示意图]
+*说明：图1-3展示了典型的OJIP曲线（横轴为对数时间坐标，纵轴为荧光强度）。图中标注了O（约20 μs）、J（约2 ms）、I（约30 ms）、P（约300 ms）四个特征点，以及O-J相（初级电荷分离）、J-I相（PQ库电子传递）、I-P相（PSI受体侧还原）三个阶段对应的生理过程。干旱胁迫下，K-step（约300 μs）的出现指示放氧复合体（OEC）损伤，J点的相对升高（$V_J$增大）反映PQ库的过度还原。*
+
+OJIP 荧光动力学技术的成熟为精细诊断光合损伤提供了可能。Strasser et al. (2004) 系统构建了 JIP-test 分析框架，将 OJIP 曲线分解为 O-J-I-P 四个多相上升阶段，定义了包括光合性能指数（$PI_{\text{abs}}$）在内的30余个生物物理参数。该框架的核心是能量管道模型（Energy Pipeline Model），将光合电子传递过程抽象为四个基本能量通量：单位反应中心的光能吸收通量（ABS/RC）、捕获通量（$TR_0$/RC）、电子传递通量（$ET_0$/RC）和热耗散通量（$DI_0$/RC）。其中，$PI_{\text{abs}}$ 整合了反应中心密度（RC/ABS）、最大光化学效率（$\varphi_{P_0}$）和电子传递效率（$\psi_{E_0}$）三个独立功能步骤的信息，被认为是比单一参数 $F_v/F_m$ 更为敏感的胁迫综合指标。Srivastava et al. (1995) 阐明了 OJIP 瞬态在植物及蓝细菌中的普适性，证实了 J 点（2 ms）的隆起反映了 $Q_{\text{A}}^{-}$ 的过度积累。如前所述，OJIP 曲线的多相结构使其能够同时诊断电子传递链上游（PSII 供体侧）和下游（PSI 受体侧）的功能状态。Stirbet et al. (2024) 进一步分析了 OJIP 曲线在非生物胁迫下的精细结构，证实重度干旱导致的放氧复合体（OEC）损伤会在 300 $\mu s$ 处诱发出特异性的 K-step 信号。K-step 的出现意味着 OEC 的锰簇（$Mn_4CaO_5$）受到不可逆损伤，导致 PSII 供体侧的水裂解反应受阻，$P_{680}^{+}$ 的再还原速率下降。该研究还指出在 O-J 相的 150 $\mu s$ 处可能出现 L-step 信号，该信号与 PSII 单元间的能量连通性（Energetic Connectivity）有关，反映了类囊体膜上 PSII 天线复合体的组织状态。本研究将基于JIP-test框架提取8个关键荧光动力学参数，作为OJIP模态的特征输入，以捕捉干旱胁迫下光合电子传递链的功能变化。
+
+静态荧光光谱（Steady-state Fluorescence Spectrum）是在连续激发光照射下，植物叶片发出的荧光强度随发射波长变化的分布曲线。与叶绿素荧光动力学关注光合电子传递过程不同，静态荧光光谱同时包含来自两类截然不同生化来源的信号：叶绿体中叶绿素$a$的红色荧光F690和远红色荧光F740，以及细胞壁中酚类化合物的蓝色荧光F440和绿色荧光F520。酚类化合物的荧光来源于苯丙烷代谢途径（Phenylpropanoid Pathway）的产物，该途径以苯丙氨酸为起点，经苯丙氨酸解氨酶PAL催化生成肉桂酸，再经一系列羟基化和甲基化反应生成对香豆酸、咖啡酸、阿魏酸等羟基肉桂酸衍生物，最终以酯键形式与细胞壁多糖结合。这些酚类化合物在355 nm的UV-A激发下产生强烈的蓝绿色荧光，其荧光强度与细胞壁中酚类物质的积累量直接相关。干旱胁迫通过激活PAL基因的表达，上调苯丙烷代谢通量，导致细胞壁酚类物质积累增加，进而引起F440荧光信号升高；与此同时，干旱导致的叶绿素降解使F690和F740信号下降，两者的比值（如F440/F690）因此成为同时反映"次生代谢激活"与"光合色素降解"两个维度的综合胁迫指标。这一特性使静态荧光光谱在信息内容上与OJIP动力学形成互补：前者反映代谢层面的防御响应，后者反映功能层面的光合损伤。
+
+[在此处插入 Figure 1-4: UV-A激发下植物叶片静态荧光发射光谱示意图]
+*说明：图1-4展示了355 nm UV-A激发下健康叶片（实线）与干旱胁迫叶片（虚线）的荧光发射光谱对比。图中标注了四个特征峰：F440（蓝色荧光，细胞壁酚类化合物）、F520（绿色荧光，酚类化合物）、F690（红色荧光，叶绿素a）和F740（远红色荧光，叶绿素a）。干旱胁迫下，F440因苯丙烷代谢激活而升高，F690和F740因叶绿素降解而下降，F440/F690比值的变化幅度显著大于单一荧光通道。*
+
+多光谱荧光成像（MFI）技术则开辟了次生代谢监测的新路径。Lichtenthaler & Schweiger (1998) 证实了细胞壁结合的阿魏酸（Ferulic Acid）是植物发出蓝色荧光（F440）的主要物质来源。在紫外光（UV-A, 355 nm）激发下，植物叶片的荧光发射光谱呈现四个特征峰：蓝色荧光峰（F440）和绿色荧光峰（F520）主要源于细胞壁中的阿魏酸和对香豆酸等酚类化合物，而红色荧光峰（F690）和远红色荧光峰（F740）则来自叶绿体中的叶绿素 $a$。这四个荧光峰的相对强度及其比值（如 F440/F690、F440/F740）可作为叶片生理状态的敏感指标（Lichtenthaler & Schweiger, 1998）。Buschmann et al. (2000) 采用多色荧光成像系统研究了甜菜叶片的养分状态，发现蓝/红荧光比值（BFR）能够比叶绿素荧光更早地预警植物的生理紊乱。该研究采用 UV-A 激发光源配合四通道滤光片成像系统，同步获取 F440、F520、F690 和 F740 四个波段的荧光图像，发现氮缺乏导致叶绿素含量下降时，F690 和 F740 显著降低，而 F440 因酚类物质积累反而升高，使得 BFR 比值的变化幅度远大于单一荧光通道。Murchie et al. (2024) 的最新综述指出，将叶绿素荧光（CF）与多光谱荧光（MFI）结合，能够实现对植物“能量流”与“物质流”的同步监测，是构建未来智慧农业诊断系统的核心技术。本研究采集的静态荧光光谱（400-800 nm）即包含上述蓝色荧光（F440）和红色荧光（F690）信息，可同时反映细胞壁酚类物质积累和叶绿素含量变化，与 OJIP 动力学形成"次生代谢-光合功能"的互补。
+
+[在此处插入 Table 1-3: 本研究三种光谱模态特征体系对比]
+*说明：表1-3从测量原理、激发/测量条件、特征数量、信息层次和代表参数五个维度，对多光谱反射（Multi，19个特征）、静态荧光（Static，10个特征）和OJIP动力学（OJIP，8个特征）三种模态进行系统比较，阐明三者在"结构-代谢-功能"三个层次上的互补关系，为多源融合设计提供理论依据。*
 
 ### 1.2.4 多源光谱融合与人工智能在农业中的研究进展
 
-随着传感器维度的增加，如何有效处理高维异构数据成为研究焦点。Feng et al. (2024) 比较了不同层级的数据融合策略，证实在特征层级（Feature-level）进行多光谱与热红外特征拼接，能够显著提升模型对作物水分胁迫的判别能力。然而，在样本量受限（$N < 1000$）的典型农学实验中，传统的深度学习架构往往面临严重的过拟合风险。
+　　随着传感器维度的增加，如何有效处理高维异构数据成为研究焦点。Feng et al. (2024) 比较了不同层级的数据融合策略，以温室栽培的番茄为研究对象，分别采集了 RGB 图像、多光谱反射率和热红外温度三类传感器数据，从中提取颜色直方图、植被指数和冠层温度等共计56个特征。该研究系统比较了数据层级、特征层级和决策层级三种融合方案，并分别采用支持向量机（SVM）、随机森林和 XGBoost 进行分类建模，结果证实在特征层级进行多光谱与热红外特征拼接时，XGBoost 模型的干旱状态分类准确率最高，达到92.3%。Wang et al. (2021) 基于无人机高光谱遥感，整合植被指数与荧光光谱信息对水稻产量进行估算。该研究从高光谱数据中提取了 NDVI、增强型植被指数（EVI）等反射率指标以及日光诱导叶绿素荧光（SIF）信息，采用偏最小二乘回归（PLSR）和随机森林（RF）模型进行产量预测，结果表明植被指数与荧光信息的融合较单一数据源的预测精度提升了8%~15%，验证了光谱-荧光融合策略在水稻表型预测中的有效性。需要说明的是，上述研究均采用特征层级融合（Feature-level Fusion）策略，即将不同传感器提取的特征向量直接拼接后送入统一模型。这一策略的优势在于实现简单且保留了原始特征的物理可解释性，但对特征间的冗余和量纲差异较为敏感。本研究同样运用特征层级融合，并通过 Z-score 标准化消除量纲影响——这一选择既保留了特征的物理可解释性，又兼顾了实现的简洁性。不过，在样本量受限（$N < 1000$）的典型农学实验中，传统的深度学习架构往往面临严重的过拟合风险。
 
-表格数据基础模型（Tabular Foundation Models）的突破为这一难题提供了新解。Hollmann et al. (2023) 提出了TabPFN（Prior-Data Fitted Networks）表格数据基础模型，该模型基于12层Transformer编码器架构，在超过1亿个合成分类任务上进行离线预训练，通过学习贝叶斯推理的先验分布实现对新任务的零样本迁移。在OpenML-CC18基准测试的30个数据集上，TabPFN在样本量小于1000的任务中达到了0.898的平均AUC，较XGBoost（0.873）和CatBoost（0.881）分别提升2.5和1.7个百分点，且推理时间仅需约1秒。Badaro et al. (2023) 综述了表格数据 Transformer 的应用，指出此类模型在处理非均匀、非线性特征交互方面具有天然优势。Sabo et al. (2025) 率先将 TabPFN 应用于次国家级规模的作物产量预测，结果证实该模型在无需超参数调优的情况下，其预测精度显著超越了经典的随机森林和梯度提升模型。Sabo et al. (2025) 的研究聚焦于大尺度产量预测（样本量>1000），而本研究则探索TabPFN在小样本农学实验（N=117）中的适用性，验证其预训练范式能否在种质资源评价这一典型小样本场景下保持性能优势。
+　　在农学小样本场景下，表格型多源光谱数据的机器学习建模面临多重挑战。样本量通常远小于特征维度（$N \ll p$），传统参数模型容易陷入过拟合；不同模态的特征在量纲和分布上存在显著差异，对模型的特征处理能力提出更高要求；梯度提升树等集成方法虽然在中等样本量下表现稳健，但其超参数调优本身需要足够的样本量支撑，在$N < 200$的场景下往往陷入"调参困境"。深度学习方法虽然理论上具有更强的表达能力，但其参数量通常远超样本量，在小样本场景下收敛困难且泛化性差。基础模型（Foundation Model）范式的兴起为这一困境提供了新的思路：通过在大规模数据上进行离线预训练，模型可以学习到跨任务的通用先验知识，在面对新任务时无需从头训练，仅凭少量样本即可实现高质量的预测。这一范式在自然语言处理领域的GPT系列和计算机视觉领域的CLIP中已取得显著成果，但其在表格数据领域的适用性长期存疑，原因在于表格数据的特征语义高度任务特异，难以像文本或图像那样构建统一的预训练目标。Prior-Data Fitting（PDF）框架的提出从根本上解决了这一问题：通过在大量合成数据集上学习贝叶斯推理的先验分布，模型可以在推理阶段将训练样本作为上下文，即In-Context Learning，直接输出后验预测分布，实现真正意义上的零样本迁移。表格数据基础模型的突破为这一难题提供了新解。Hollmann et al. (2023) 提出了TabPFN（Prior-Data Fitted Networks）表格数据基础模型，该模型基于12层Transformer编码器架构，在超过1亿个合成分类任务上进行离线预训练，通过学习贝叶斯推理的先验分布实现对新任务的零样本迁移。在OpenML-CC18基准测试的30个数据集上，TabPFN在样本量小于1000的任务中达到了0.898的平均AUC，较XGBoost的0.873和CatBoost的0.881分别提升2.5和1.7个百分点，且推理时间仅需约1秒。Badaro et al. (2023) 系统综述了 Transformer 架构在表格数据建模中的应用，分析了自注意力机制在捕捉特征间非线性交互方面的天然优势。与传统的梯度提升树模型通过逐层分裂来隐式建模特征交互不同，Transformer 通过注意力权重矩阵直接计算任意两个特征之间的关联强度，这一特性使其在处理异构特征时表现出更强的适应性，例如连续型光谱指数与离散型荧光参数的混合输入。Sabo et al. (2025) 将 TabPFN 应用于次国家级规模的作物产量预测，以欧洲多国的小麦和玉米为研究对象，利用气象、土壤和遥感植被指数等多源特征作为输入，在无需超参数调优的情况下，TabPFN 的预测精度（$R^2$）显著超越了经典的随机森林和梯度提升模型，且训练与推理的总耗时不足10秒。不过，该工作聚焦于大尺度产量预测（样本量>1000），而本研究则探索TabPFN在小样本农学实验（N=117）中的适用性，验证其预训练范式能否在种质资源评价这一典型小样本场景下保持性能优势。
 
-可解释人工智能（XAI）则是消除农业黑箱模型信任危机的关键。Lundberg et al. (2020) 将基于博弈论的 SHAP 算法应用于树模型解释，实现了特征贡献的局部与全局量化符。该方法目前已被广泛应用于解析环境因子（如降水、施肥）对产量的非线性影响，但在多源光谱协同机理的挖掘方面仍有待深入。
+　　可解释人工智能（Explainable Artificial Intelligence，XAI）则是消除农业黑箱模型信任危机的关键。可解释人工智能方法通常按两个维度分类：其一，模型无关方法（Model-agnostic）与模型特定方法（Model-specific）；其二，针对单个样本的局部解释与针对整体模型行为的全局解释。在众多归因方法中，基于合作博弈论（Cooperative Game Theory）的Shapley值有着独特的理论优势：它是唯一同时满足效率性、对称性、虚拟性和可加性四条公理的特征归因方案，这四条公理共同保证了特征贡献分配的唯一性和公平性。有意思的是，Shapley值框架不仅可以计算每个特征的主效应，还可以通过Shapley交互值（Shapley Interaction Values）量化任意两个特征之间的协同或拮抗效应——即特征$i$与特征$j$共同出现时产生的超出各自主效应之和的额外贡献。这一交互值分析能力对于多源融合场景尤为关键：跨模态特征交互，例如荧光动力学参数与多光谱指数之间的协同，正是理解融合增益生物学本质的核心切入点，而单纯的特征重要性排序无法揭示这种跨模态协同机制。Lundberg et al. (2020) 提出了TreeSHAP算法，将SHAP（SHapley Additive exPlanations）的精确计算从指数级复杂度降至多项式级，首次实现了对随机森林、梯度提升树等树模型的高效精确解释，并在此基础上构建了从局部样本解释到全局模型行为理解的完整分析框架。该方法目前已被广泛应用于解析降水、施肥等环境因子对产量的非线性影响，但现有应用多停留在单特征重要性排序层面，尚未充分利用 SHAP Interaction Values 来揭示特征间的非线性协同效应。对于多源融合场景，跨模态特征交互恰恰是理解融合增益的关键，这也是本研究引入 SHAP 交互值分析的直接动机。
 
 ### 1.2.5 现有研究的不足与发展趋势
 
-尽管光谱技术与 AI 算法各自取得了长足进展，但聚焦于水稻抗旱性快速评价的系统性研究仍存在明显空白。
+　　尽管光谱技术与 AI 算法各自取得了长足进展，但聚焦于水稻抗旱性快速评价的系统性工作仍存在明显空白。
 
-现有研究多关注单一的光谱或荧光模态，缺乏对 OJIP 光合动力学与多光谱反射、静态荧光的系统性整合研究。例如，Feng et al. (2024) 虽然融合了RGB、多光谱和热红外三种模态，但未纳入荧光动力学信息；Murchie et al. (2024) 的综述虽然强调了荧光技术的重要性，但其引述的多数研究仍局限于单一荧光模态，缺乏与反射光谱的系统性整合。反射光谱擅长捕捉叶片色素和结构变化，荧光光谱擅长反映次生代谢状态，OJIP动力学则直接探测光合电子传递功能。三种模态各有侧重，但"结构-功能"信息的互补机制尚不明确，多源融合的协同增益缺乏定量验证。与此同时，在样本量有限的科研场景下（通常N<200），传统机器学习模型容易过拟合，深度学习模型则因参数量过大而难以收敛。TabPFN 等基础模型在农学领域的适用性尚未得到验证，预训练范式能否突破小样本表型建模的瓶颈有待探索。此外，多数研究止步于"黑箱预测"，未能利用 SHAP 交互值等前沿技术深入挖掘多源数据产生协同增益的生物学本质。即便模型预测精度较高，若无法解释"为什么多源融合优于单源"，其科学价值和育种指导意义将受到限制。
+　　现有工作多关注单一的光谱或荧光模态，缺乏对 OJIP 光合动力学与多光谱反射、静态荧光的系统性整合。Berger et al. (2022) 在 *Remote Sensing of Environment* 发表的大型综述中系统分析了96项多传感器光谱协同研究，发现绝大多数工作仅比较不同传感器各自的胁迫指标，而非真正实现跨模态的协同融合，且鲜有将荧光动力学信息纳入多源体系；Murchie et al. (2024) 的综述虽然强调了荧光技术的重要性，但其引述的多数工作仍局限于单一荧光模态，缺乏与反射光谱的系统性整合。反射光谱擅长捕捉叶片色素和结构变化，荧光光谱擅长反映次生代谢状态，OJIP动力学则直接探测光合电子传递功能。三种模态各有侧重，但"结构-功能"信息的互补机制尚不明确，多源融合的协同增益缺乏定量验证。与此同时，在样本量有限的科研场景下（通常N<200），传统机器学习模型容易过拟合，深度学习模型则因参数量过大而难以收敛。TabPFN 等基础模型在农学领域的适用性尚未得到验证，预训练范式能否突破小样本表型建模的瓶颈有待探索。说到底，数据和算法只是工具，关键在于能否从中提取出有生物学意义的信息。此外，多数工作止步于"黑箱预测"，未能利用 SHAP 交互值等前沿技术来深入挖掘多源数据产生协同增益的生物学本质。即便模型预测精度较高，若无法解释"为什么多源融合优于单源"，其科学价值和育种指导意义将受到限制。
 
-针对上述不足，本研究拟从三个方面开展工作。在数据层面，构建"反射+静态荧光+OJIP动力学"三源融合特征体系，通过消融实验定量验证融合增益。在模型层面，引入TabPFN基础模型，利用其在大规模合成数据上预训练获得的先验知识，探索零样本迁移在农学小样本数据上的可行性。在机制层面，采用CatBoost白盒代理结合TreeSHAP交互分析框架，从特征交互角度揭示跨模态协同的生理学机制。
+　　针对上述不足，本研究拟从三个方面开展工作。一是在数据层面，构建"反射+静态荧光+OJIP动力学"三源融合特征体系，通过消融实验定量验证融合增益。二是在模型层面，引入TabPFN基础模型，利用其在大规模合成数据上预训练获得的先验知识，探索零样本迁移在农学小样本数据上的可行性。三是在机制层面，采用CatBoost白盒代理结合TreeSHAP交互分析框架，从特征交互角度揭示跨模态协同的生理学机制。
 
 ---
 
@@ -62,109 +89,129 @@ OJIP 快速荧光诱导动力学技术的成熟为精细诊断光合损伤提供
 
 ### 1.3.1 研究目标
 
-本研究的总体目标是：构建基于多源光谱融合的水稻种质资源抗旱性快速评价方法，验证 TabPFN 模型在小样本表型预测中的优势，并揭示多源信息的协同生理机制。
+　　本研究的总体目标是：构建基于多源光谱融合的水稻种质资源抗旱性快速评价方法，验证 TabPFN 模型在小样本表型预测中的优势，并揭示多源信息的协同生理机制。
 
-围绕上述总体目标，本研究设定了四个层层递进的具体目标。在特征解析层面，本研究拟系统阐明水稻在干旱胁迫下反射光谱、荧光光谱及OJIP动力学的响应规律，构建涵盖"结构-功能"多维信息的特征体系。在模型寻优层面，本研究将在小样本（N<200）条件下，系统比较TabPFN与经典机器学习模型（CatBoost、RF、PLSR等）的预测性能，验证基础模型在农学数据建模中的适用性。在机制揭示层面，本研究将利用SHAP交互值分析方法，量化不同模态间的协同效应，从生理学角度解释模型决策依据，揭示多源融合产生增益的科学本质。在应用验证层面，本研究将对不同水稻种质资源进行抗旱性排名，并与传统生理指标进行一致性验证，为育种实践提供参考。
+　　上述总体目标的设定直接对应了1.2.5节所指出的三个研究空白。在多模态整合方面，多数工作局限于单一光谱或荧光模态，缺乏对OJIP光合动力学与多光谱反射、静态荧光的系统性整合——本研究在特征解析层面拟构建三源融合特征体系，通过消融实验定量验证各模态的边际贡献。在小样本建模方面，$N < 200$的典型农学实验中，传统机器学习模型容易过拟合，深度学习模型则因参数量过大而难以收敛——本工作在模型寻优层面引入TabPFN基础模型，探索预训练范式在种质资源评价这一小样本场景下的适用性。在机制解释方面，多数工作止步于预测精度的提升，未能揭示多源融合产生协同增益的生物学本质——本研究在机制揭示层面采用SHAP交互值分析，从特征交互角度阐明跨模态协同的生理学机制。
+
+　　围绕上述总体目标，本研究设定了四个层层递进的具体目标。一是在特征解析层面，本研究拟系统阐明水稻在干旱胁迫下反射光谱、荧光光谱及OJIP动力学的响应规律，构建涵盖"结构-功能"多维信息的特征体系。二是在模型寻优层面，本研究将在小样本（N<200）条件下，系统比较TabPFN与经典机器学习模型（CatBoost、RF、PLSR等）的预测性能，验证基础模型在农学数据建模中的适用性。三是在机制揭示层面，本研究将利用SHAP交互值分析方法，量化不同模态间的协同效应，从生理学角度解释模型决策依据，揭示多源融合产生增益的科学本质。四是在应用验证层面，本研究将对不同水稻种质资源进行抗旱性排名，并与传统生理指标进行一致性验证，为育种实践提供参考。
 
 ### 1.3.2 研究内容
 
+　　围绕上述研究目标，本研究设计了三项相互衔接的研究内容：以多源光谱响应特征研究为基础，为后续建模提供高质量的特征输入和真值标签；以多源融合预测模型与消融分析为核心，验证融合策略的有效性并筛选最优方案；以特征交互分析为深化，从机制层面揭示多源融合产生协同增益的生物学本质。三项内容依次递进，分别对应第3、4、5章的研究工作。
+
 **（1）水稻干旱胁迫多源光谱响应特征研究**
-选取具有代表性的籼稻品种，设置不同梯度的干旱胁迫试验。同步采集多光谱反射率（涵盖可见-近红外波段）、稳态荧光发射光谱（400-800 nm）以及 OJIP 快速叶绿素荧光动力学曲线。构建包含 $D_{\text{conv}}$（基于生理指标的综合抗旱指数）在内的真值标签体系。本部分内容将在第3章详细阐述。
+　　选取具有代表性的籼稻品种，设置不同梯度的干旱胁迫试验，同步采集多光谱反射率（涵盖可见-近红外波段）、稳态荧光发射光谱（400-800 nm）以及OJIP快速叶绿素荧光动力学曲线。三种模态的同步采集设计基于以下考量：多光谱反射率反映叶片色素含量和细胞结构的变化，属于"结构层"信息；静态荧光光谱中的蓝色荧光（F440）反映苯丙烷代谢的激活程度，属于"代谢层"信息；OJIP动力学则直接探测光合电子传递链的功能状态，属于"功能层"信息。三者在相同生理状态下同步采集，可以避免时间差异引入的噪声，为后续的多源融合分析提供高质量的配对数据。在此基础上，构建包含$D_{\text{conv}}$（基于生理指标的综合抗旱指数）在内的真值标签体系，为监督学习提供可靠的训练目标。本部分内容将在第3章详细阐述。
 
-**（2）基于多源光谱融合的抗旱性预测模型研究**
-构建"反射+静态荧光+动力学"的多源特征池。建立包含线性模型（PLSR, Ridge）、传统集成模型（Random Forest, CatBoost）和基础模型（TabPFN）的对比框架。重点考察 TabPFN 在免调参、小样本场景下的预测精度（$R^2$, RMSE）与排序能力（Spearman $\rho$）。本部分内容将在第4章详细阐述。
+**（2）基于多源光谱融合的水稻抗旱性预测模型研究**
+　　构建"反射+静态荧光+动力学"的多源特征池（共37个特征：19个Multi + 10个Static + 8个OJIP），建立包含线性模型（PLSR、Ridge）、传统集成模型（Random Forest、CatBoost）和基础模型（TabPFN）的六模型对比框架，重点考察TabPFN在免调参、小样本场景下的预测精度（$R^2$、RMSE）与排序能力（Spearman $\rho$）。在此基础上，设计全组合消融实验（Ablation Study），对比单模态（3种）、双模态（3种）及三模态（1种）共7种融合方案的性能差异，计算融合增益系数，量化各模态的边际贡献，验证多源融合的必要性。消融实验的设计遵循"控制变量"原则，在相同模型（TabPFN）和相同评估框架（GroupKFold交叉验证）下进行，以确保不同融合方案之间的可比性。本部分内容将在第4章详细阐述。
 
-**（3）多源融合策略有效性验证与消融分析**
-设计全组合消融实验（Ablation Study），对比单模态、双模态及三模态融合的性能差异。计算"融合增益系数"，量化各模态的边际贡献，验证多源融合的必要性。本部分内容将在第4章详细阐述。
-
-**（4）基于特征交互分析的多源协同机制研究**
-构建可解释性分析流程。由于 TabPFN 目前缺乏原生的 SHAP 接口，本研究采用与其预测行为高度一致（Spearman $\rho > 0.9$）的 CatBoost 模型作为"白盒代理"，计算 TreeSHAP 特征重要性及 SHAP Interaction Values。重点分析跨模态特征对（如"荧光参数 $\times$ 光谱指数"）的交互作用，揭示光合功能与叶片结构信息的互补机制。本部分内容将在第5章详细阐述。
+**（3）基于特征交互分析的多源光谱协同机制研究**
+　　由于TabPFN目前缺乏原生的SHAP接口，本研究采用与其预测行为高度一致（Spearman $\rho = 0.978$）的CatBoost模型作为"白盒代理"，计算TreeSHAP特征重要性及SHAP Interaction Values。选择CatBoost作为代理的合理性在于：两者在抗旱性排名上的高度一致性保证了代理解释的有效性，而CatBoost作为梯度提升树模型，其TreeSHAP计算具有多项式级的精确性，无需近似。重点分析跨模态特征对（如"荧光参数$\times$光谱指数"）的交互作用，揭示光合功能与叶片结构信息的互补机制，从生理学角度解释多源融合产生增益的科学本质。本部分内容将在第5章详细阐述。
 
 ### 1.3.3 技术路线
 
-本研究的技术路线遵循“数据采集—模型构建—机制解析—应用验证”的逻辑主线。首先，通过控制试验获取水稻生理指标及多源光谱数据；其次，构建多模态融合特征体系，并分别训练线性、集成学习及 TabPFN 基础模型；随后，通过消融实验和模型对比筛选最优预测方案；最后，利用 SHAP 可解释性分析揭示多源特征的协同机制，最终建立可靠的水稻抗旱性评价方法。
+　　本研究的技术路线遵循了"数据采集—特征工程—模型优化—机制解析"的逻辑主线，各阶段之间形成严密的数据流传递关系，如图1-1所示。
+
+　　在数据采集阶段，以13个籼稻品种为供试材料，设置正常灌溉和干旱胁迫两种处理，在分蘖期同步采集多光谱反射率、稳态荧光光谱和OJIP快速荧光曲线，并同步测定叶片相对含水量（RWC）、叶绿素含量（SPAD）、丙二醛（MDA）等生理指标。基于生理指标，采用双维度PCA-隶属函数法计算各品种的抗旱性综合评价值（$D_{\text{conv}}$），作为后续监督学习的真值标签。
+
+　　在特征工程阶段，从三种光谱模态中分别提取特征：多光谱模态提取19个植被指数（涵盖NDVI、PRI、NDWI等），静态荧光模态提取10个荧光参数（F440、F690、F740及其比值），OJIP动力学模态提取8个JIP-test参数（$F_v/F_m$、$PI_{\text{abs}}$、$V_J$等），构成37维融合特征向量。所有特征经Z-score标准化后，按GroupKFold（以品种为分组单元）划分训练集和测试集，确保同一品种的不同重复不会同时出现在训练集和测试集中，避免数据泄露。
+
+　　在模型优化阶段，以37维融合特征为输入，分别训练PLSR、Ridge、Random Forest、CatBoost和TabPFN五种模型，以Spearman $\rho$和$R^2$为主要评价指标，筛选最优预测方案。同时，设计全组合消融实验，系统评估7种特征子集（单模态3种、双模态3种、三模态1种）的预测性能，量化各模态的边际贡献。在机制解析阶段，以CatBoost为白盒代理，计算37×37的SHAP交互值矩阵，识别贡献最大的跨模态特征对，结合光合生理学知识对交互机制进行解释。
 
 *[在此处插入 Figure 1-1: 技术路线图]*
-*说明：图 1-1 展示了从数据采集、特征提取、模型训练到机制解析的全流程。*
 
----
+*说明：图1-1展示了本研究的完整技术路线。图中从左至右依次为数据采集模块（多光谱相机、荧光光谱仪、OJIP荧光仪及生理指标测定）、特征提取模块（三种模态的特征计算与标准化）、模型训练与评估模块（六种模型的对比框架与消融实验设计）和机制解析模块（CatBoost白盒代理与SHAP交互值分析）。各模块之间的箭头表示数据流向，虚线框表示本研究的核心创新环节。*
+
 
 ## 参考文献
 
-Araus, J. L., et al. (2002). Plant breeding and drought in C3 cereals: what should we breed for? *Annals of Botany*.
+Araus, J. L., et al. (2002). Plant breeding and drought in C3 cereals: what should we breed for? *Annals of Botany*, 89(7), 925-940.
 
-Badaro, G., et al. (2023). Transformers for tabular data representation: A survey of models and applications. *Transactions of the Association for Computational Linguistics*.
+Badaro, G., et al. (2023). Transformers for tabular data representation: A survey of models and applications. *Transactions of the Association for Computational Linguistics*, 11, 353-368.
 
-Barrs, H. D., & Weatherley, P. E. (1962). A re-examination of the relative turgidity technique for estimating water deficits in leaves. *Australian Journal of Biological Sciences*.
+Barrs, H. D., & Weatherley, P. E. (1962). A re-examination of the relative turgidity technique for estimating water deficits in leaves. *Australian Journal of Biological Sciences*, 15(3), 413-428.
+
+Berger, K., et al. (2022). Multi-sensor spectral synergies for crop stress detection and monitoring in the optical domain: A review. *Remote Sensing of Environment*, 280, 113198.
 
 Blum, A. (2011). *Plant Breeding for Water-Limited Environments*. Springer.
 
-Buschmann, C., et al. (2000). Multicolor fluorescence imaging of sugar beet leaves with different nitrogen status. *Plant Biology*.
+Buschmann, C., et al. (2000). Multicolor fluorescence imaging of sugar beet leaves with different nitrogen status. *Photosynthetica*, 38(4), 483-491.
 
-Carter, G. A. (1991). Primary and secondary effects of water content on the spectral reflectance of leaves. *American Journal of Botany*.
+Carter, G. A. (1991). Primary and secondary effects of water content on the spectral reflectance of leaves. *American Journal of Botany*, 78(7), 916-924.
 
-Carter, G. A. (1993). Responses of leaf spectral reflectance to plant stress. *American Journal of Botany*.
+Carter, G. A. (1993). Responses of leaf spectral reflectance to plant stress. *American Journal of Botany*, 80(3), 239-243.
 
-Dash, J., & Curran, P. J. (2004). The MERIS terrestrial chlorophyll index. *International Journal of Remote Sensing*.
-
-Dhindsa, R. S., et al. (1981). Leaf senescence: correlated with increased levels of membrane permeability and lipid peroxidation. *Journal of Experimental Botany*.
+Dhindsa, R. S., et al. (1981). Leaf senescence: correlated with increased levels of membrane permeability and lipid peroxidation. *Journal of Experimental Botany*, 32(1), 93-101.
 
 FAO. (2025). *World Food Situation*.
 
-Feng, L., Chen, S., Zhang, C., Zhang, Y., & He, Y. (2024). Multi-sensor fusion for crop drought stress detection using machine learning. *Computers and Electronics in Agriculture*, 218, 108693.
+Feng, L., et al. (2024). Multi-sensor fusion for crop drought stress detection using machine learning. *Computers and Electronics in Agriculture*, 218, 108693.
 
-Fernandez, G. C. (1992). Effective selection criteria for assessing plant stress tolerance.
+Fernandez, G. C. (1992). Effective selection criteria for assessing plant stress tolerance. In *Proceedings of the International Symposium on Adaptation of Vegetables and Other Food Crops in Temperature and Water Stress* (pp. 257-270).
 
-Fischer, R. A., & Maurer, R. (1978). Drought resistance in spring wheat cultivars. I. Grain yield responses. *Australian Journal of Agricultural Research*.
+Fischer, R. A., & Maurer, R. (1978). Drought resistance in spring wheat cultivars. I. Grain yield responses. *Australian Journal of Agricultural Research*, 29(5), 897-912.
 
-Fukai, S., & Cooper, M. (1995). Development of drought-resistant cultivars using physiological traits in rice. *Field Crops Research*.
+Fukai, S., & Cooper, M. (1995). Development of drought-resistant cultivars using physiological traits in rice. *Field Crops Research*, 40(2), 67-86.
 
-Gamon, J. A., et al. (1992). A narrow-waveband spectral index that tracks diurnal changes in photosynthetic efficiency. *Remote Sensing of Environment*.
+Gamon, J. A., et al. (1992). A narrow-waveband spectral index that tracks diurnal changes in photosynthetic efficiency. *Remote Sensing of Environment*, 41(1), 35-44.
 
-Gitelson, A. A., & Merzlyak, M. N. (1994). Spectral reflectance changes associated with autumn senescence. *Journal of Plant Physiology*.
+Gitelson, A. A., & Merzlyak, M. N. (1994). Spectral reflectance changes associated with autumn senescence. *Journal of Plant Physiology*, 143(3), 286-292.
 
-Govindjee. (1995). Sixty-three years since Kautsky: Chlorophyll a fluorescence. *Australian Journal of Plant Physiology*.
+Gill, S. S., & Tuteja, N. (2010). Reactive oxygen species and antioxidant machinery in abiotic stress tolerance in crop plants. *Plant Physiology and Biochemistry*, 48(12), 909-930.
 
-Hollmann, N., et al. (2023). TabPFN: A transformer that solves small tabular classification problems in a second. *ICLR*.
+Govindjee. (1995). Sixty-three years since Kautsky: Chlorophyll a fluorescence. *Australian Journal of Plant Physiology*, 22(2), 131-160.
 
-Hsiao, T. C. (1973). Plant responses to water stress. *Annual Review of Plant Physiology*.
+Hayat, S., et al. (2012). Role of proline under changing environments: A review. *Plant Signaling & Behavior*, 7(11), 1456-1466.
 
-Huete, A. R. (1988). A soil-adjusted vegetation index (SAVI). *Remote Sensing of Environment*.
+Hollmann, N., et al. (2023). TabPFN: A transformer that solves small tabular classification problems in a second. In *Proceedings of the Eleventh International Conference on Learning Representations (ICLR 2023)*.
+
+Hsiao, T. C. (1973). Plant responses to water stress. *Annual Review of Plant Physiology*, 24, 519-570.
+
+Huete, A. R. (1988). A soil-adjusted vegetation index (SAVI). *Remote Sensing of Environment*, 25(3), 295-309.
 
 IRRI. (2013). *Standard Evaluation System for Rice*.
 
+Jiang, Z., et al. (2021). Combining UAV-RGB high-throughput field phenotyping and genome-wide association study to reveal genetic variation of rice germplasms in dynamic response to drought stress. *New Phytologist*, 232(1), 440-455.
+
 Levitt, J. (1980). *Responses of Plants to Environmental Stresses*. Academic Press.
 
-Lichtenthaler, H. K., & Schweiger, J. (1998). Cell wall bound ferulic acid, the major substance of the blue-green fluorescence emission. *Journal of Plant Physiology*.
+Lichtenthaler, H. K., & Schweiger, J. (1998). Cell wall bound ferulic acid, the major substance of the blue-green fluorescence emission. *Journal of Plant Physiology*, 152(2-3), 272-282.
 
-Lundberg, S. M., et al. (2020). From local explanations to global understanding with explainable AI for trees. *Nature Machine Intelligence*.
+Lundberg, S. M., et al. (2020). From local explanations to global understanding with explainable AI for trees. *Nature Machine Intelligence*, 2(1), 56-67.
 
-Murchie, E. H., et al. (2024). Chlorophyll fluorescence analysis: a guide to good practice. *Journal of Experimental Botany*.
+Luo, L. J. (2010). Breeding for water-saving and drought-resistance rice (WDR) in China. *Journal of Experimental Botany*, 61(13), 3509-3517.
 
-Peñuelas, J., et al. (1995). The reflectance at the 950–970 nm region as an indicator of plant water status. *International Journal of Remote Sensing*.
+Murchie, E. H., et al. (2024). Chlorophyll fluorescence analysis: a guide to good practice. *Journal of Experimental Botany*, 75(13), 3986-4004.
 
-Peñuelas, J., et al. (2011). Reflectance assessment of seasonal and annual changes in biomass. *Remote Sensing of Environment*.
+Peñuelas, J., et al. (1993). The reflectance at the 950–970 nm region as an indicator of plant water status. *International Journal of Remote Sensing*, 14(10), 1887-1905.
 
-Rouse, J. W., et al. (1974). Monitoring vegetation systems in the Great Plains with ERTS.
+Rouse, J. W., et al. (1974). Monitoring vegetation systems in the Great Plains with ERTS. In *Third Earth Resources Technology Satellite-1 Symposium*, NASA SP-351 (pp. 309-317).
 
 Sabo, F., et al. (2025). From Rows to Yields: How Foundation Models for Tabular Data Simplify Crop Yield Prediction. *arXiv preprint arXiv:2506.19046*.
 
-Schreiber, U., et al. (1986). Continuous recording of photochemical and non-photochemical chlorophyll fluorescence quenching. *Photosynthesis Research*.
+Schreiber, U., et al. (1986). Continuous recording of photochemical and non-photochemical chlorophyll fluorescence quenching. *Photosynthesis Research*, 10(1-2), 51-62.
 
-Sitko, K., et al. (2024). Advanced analysis of OJIP chlorophyll fluorescence induction kinetics. *Photosynthetica*.
-
-Srivastava, A., et al. (1995). Polyphasic chlorophyll a fluorescence transient in plants and cyanobacteria. *Photochemistry and Photobiology*.
+Srivastava, A., et al. (1995). Polyphasic chlorophyll a fluorescence transient in plants and cyanobacteria. *Photochemistry and Photobiology*, 61(1), 32-42.
 
 Stirbet, A., et al. (2024). Chlorophyll a fluorescence induction. *Photosynthetica*.
 
-Strasser, R. J., et al. (2004). Analysis of the chlorophyll a fluorescence transient.
+Strasser, R. J., et al. (2004). Analysis of the chlorophyll a fluorescence transient. In G. C. Papageorgiou & Govindjee (Eds.), *Chlorophyll a Fluorescence: A Signature of Photosynthesis* (pp. 321-362). Springer.
 
-Szabados, L., & Savouré, A. (2010). Proline: a multifunctional amino acid. *Trends in Plant Science*.
+Szabados, L., & Savouré, A. (2010). Proline: a multifunctional amino acid. *Trends in Plant Science*, 15(2), 89-97.
 
-Uga, Y., et al. (2013). Control of root system architecture by DEEPER ROOTING 1. *Nature Genetics*.
+Uga, Y., et al. (2013). Control of root system architecture by DEEPER ROOTING 1. *Nature Genetics*, 45(9), 1097-1102.
 
-Wasaya, A., et al. (2018). Root phenotyping for drought tolerance: a review. *Agronomy*.
+Wang, F., et al. (2021). Rice yield estimation based on vegetation index and florescence spectral information from UAV hyperspectral remote sensing. *Remote Sensing*, 13(17), 3390.
+
+Wasaya, A., et al. (2018). Root phenotyping for drought tolerance: a review. *Agronomy*, 8(11), 241.
+
+Tardieu, F., et al. (2017). Plant phenomics, from sensors to knowledge. *Current Biology*, 27(15), R770-R783.
+
+Yang, W., et al. (2014). Combining high-throughput phenotyping and genome-wide association studies to reveal natural genetic variation in rice. *Nature Communications*, 5, 5087.
 
 Zhang, Y., et al. (2024). Genome-wide association study for drought tolerance in rice. *The Crop Journal*.
 
-Zhao, C., et al. (2017). Temperature increase reduces global yields of major crops. *PNAS*.
+Zhao, C., et al. (2017). Temperature increase reduces global yields of major crops. *PNAS*, 114(35), 9326-9331.
+
+Zhao, C., et al. (2019). Crop phenomics: current status and perspectives. *Frontiers in Plant Science*, 10, 714.
+

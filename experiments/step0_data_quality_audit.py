@@ -279,7 +279,7 @@ def plot_treatment_effect(df):
     fig, axes = plt.subplots(2, 3, figsize=(15, 10))
 
     # 选择代表性特征
-    features_to_plot = ['R850', 'R710', 'OJIP_FvFm', 'OJIP_PIabs', 'BF(F440)', 'RF(F690)']
+    features_to_plot = ['R850', 'R680', 'OJIP_FvFm', 'OJIP_PIabs', 'BF(F440)', 'RF(F690)']
     features_available = [f for f in features_to_plot if f in df.columns]
 
     for i, feat in enumerate(features_available):

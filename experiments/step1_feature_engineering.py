@@ -3,7 +3,7 @@ Step 1: 特征工程
 目的: 生成40个特征（文献先验筛选）
 
 特征结构（40个）：
-├── Multi原始波段（11个）        → R460-R900
+├── Multi原始波段（11个）        → R460-R910
 ├── 植被指数（8个）              → NDVI, NDRE, EVI, SIPI, PRI, MTCI, GNDVI, NDWI
 ├── Static原始波段（4个）        → F440, F520, F690, F740
 ├── Static比值（6个）            → F690/F740, F440/F690, F440/F520, F520/F690, F440/F740, F520/F740
@@ -52,12 +52,12 @@ def compute_vegetation_indices(df):
     # 提取波段（使用最接近的可用波段）
     R460 = df['R460']
     R520 = df['R520']
-    R580 = df['R580']
+    R590 = df['R590']
     R660 = df['R660']
-    R710 = df['R710']
-    R760 = df['R760']
+    R680 = df['R680']
+    R730 = df['R730']
     R850 = df['R850']
-    R900 = df['R900']
+    R910 = df['R910']
 
     # 计算植被指数
     indices = pd.DataFrame()
@@ -65,8 +65,8 @@ def compute_vegetation_indices(df):
     # 1. NDVI = (R850 - R660) / (R850 + R660)
     indices['VI_NDVI'] = (R850 - R660) / (R850 + R660 + 1e-10)
 
-    # 2. NDRE = (R850 - R710) / (R850 + R710)
-    indices['VI_NDRE'] = (R850 - R710) / (R850 + R710 + 1e-10)
+    # 2. NDRE = (R850 - R680) / (R850 + R680)
+    indices['VI_NDRE'] = (R850 - R680) / (R850 + R680 + 1e-10)
 
     # 3. EVI = 2.5 * (R850 - R660) / (R850 + 6*R660 - 7.5*R460 + 1)
     indices['VI_EVI'] = 2.5 * (R850 - R660) / (R850 + 6*R660 - 7.5*R460 + 1 + 1e-10)
@@ -74,17 +74,17 @@ def compute_vegetation_indices(df):
     # 4. SIPI = (R850 - R460) / (R850 + R660)
     indices['VI_SIPI'] = (R850 - R460) / (R850 + R660 + 1e-10)
 
-    # 5. PRI = (R520 - R580) / (R520 + R580)
-    indices['VI_PRI'] = (R520 - R580) / (R520 + R580 + 1e-10)
+    # 5. PRI = (R520 - R590) / (R520 + R590)
+    indices['VI_PRI'] = (R520 - R590) / (R520 + R590 + 1e-10)
 
-    # 6. MTCI = (R760 - R710) / (R710 - R660)
-    indices['VI_MTCI'] = (R760 - R710) / (R710 - R660 + 1e-10)
+    # 6. MTCI = (R730 - R680) / (R680 - R660)
+    indices['VI_MTCI'] = (R730 - R680) / (R680 - R660 + 1e-10)
 
     # 7. GNDVI = (R850 - R520) / (R850 + R520)
     indices['VI_GNDVI'] = (R850 - R520) / (R850 + R520 + 1e-10)
 
-    # 8. NDWI = (R850 - R900) / (R850 + R900)
-    indices['VI_NDWI'] = (R850 - R900) / (R850 + R900 + 1e-10)
+    # 8. NDWI = (R850 - R910) / (R850 + R910)
+    indices['VI_NDWI'] = (R850 - R910) / (R850 + R910 + 1e-10)
 
     print(f"  计算完成: {len(indices.columns)} 个植被指数")
     for col in indices.columns:
@@ -201,7 +201,7 @@ def create_feature_sets():
             "description": "Multi-only (Multi原始波段 + 植被指数 + Treatment)",
             "features": [
                 # Multi原始波段 (11个)
-                "R460", "R520", "R580", "R660", "R710", "R730", "R760", "R780", "R810", "R850", "R900",
+                "R460", "R520", "R590", "R660", "R680", "R710", "R730", "R780", "R820", "R850", "R910",
                 # 植被指数 (8个)
                 "VI_NDVI", "VI_NDRE", "VI_EVI", "VI_SIPI", "VI_PRI", "VI_MTCI", "VI_GNDVI", "VI_NDWI",
                 # Treatment (3个)
@@ -225,7 +225,7 @@ def create_feature_sets():
             "description": "双源融合 (Multi + Static + Treatment，不含OJIP)",
             "features": [
                 # Multi原始波段 (11个)
-                "R460", "R520", "R580", "R660", "R710", "R730", "R760", "R780", "R810", "R850", "R900",
+                "R460", "R520", "R590", "R660", "R680", "R710", "R730", "R780", "R820", "R850", "R910",
                 # 植被指数 (8个)
                 "VI_NDVI", "VI_NDRE", "VI_EVI", "VI_SIPI", "VI_PRI", "VI_MTCI", "VI_GNDVI", "VI_NDWI",
                 # Static原始波段 (4个)
@@ -241,7 +241,7 @@ def create_feature_sets():
             "description": "三源融合 (Multi + Static + OJIP + Treatment)",
             "features": [
                 # Multi原始波段 (11个)
-                "R460", "R520", "R580", "R660", "R710", "R730", "R760", "R780", "R810", "R850", "R900",
+                "R460", "R520", "R590", "R660", "R680", "R710", "R730", "R780", "R820", "R850", "R910",
                 # 植被指数 (8个)
                 "VI_NDVI", "VI_NDRE", "VI_EVI", "VI_SIPI", "VI_PRI", "VI_MTCI", "VI_GNDVI", "VI_NDWI",
                 # Static原始波段 (4个)
@@ -274,8 +274,8 @@ def main():
     metadata = df[metadata_cols].copy()
 
     # 3. 提取Multi原始波段
-    multi_cols = ['R460', 'R520', 'R580', 'R660', 'R710', 'R730',
-                  'R760', 'R780', 'R810', 'R850', 'R900']
+    multi_cols = ['R460', 'R520', 'R590', 'R660', 'R680', 'R710',
+                  'R730', 'R780', 'R820', 'R850', 'R910']
     multi_features = df[multi_cols].copy()
     print(f"\nMulti原始波段: {len(multi_cols)} 个")
 

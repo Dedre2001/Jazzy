@@ -82,8 +82,8 @@ def analyze_spectral_quality(df):
     print("3. 光谱质量分析")
     print("=" * 60)
 
-    band_cols = ['R460', 'R520', 'R580', 'R660', 'R710', 'R730',
-                 'R760', 'R780', 'R810', 'R850', 'R900']
+    band_cols = ['R460', 'R520', 'R590', 'R660', 'R680', 'R710',
+                 'R730', 'R780', 'R820', 'R850', 'R910']
 
     # 计算品种级光谱统计
     variety_spectral = df.groupby('Variety')[band_cols].agg(['mean', 'std'])
@@ -153,7 +153,7 @@ def analyze_feature_variety_separation(df):
     print("5. 特征-标签相关性分析")
     print("=" * 60)
 
-    feature_cols = ['R460', 'R520', 'R580', 'R660', 'R710', 'R730', 'R760', 'R780', 'R810', 'R850', 'R900',
+    feature_cols = ['R460', 'R520', 'R590', 'R660', 'R680', 'R710', 'R730', 'R780', 'R820', 'R850', 'R910',
                     'VI_NDVI', 'VI_NDRE', 'VI_EVI', 'VI_SIPI', 'VI_PRI', 'VI_MTCI', 'VI_GNDVI', 'VI_NDWI',
                     'BF(F440)', 'GF(F520)', 'RF(F690)', 'FrF(f740)',
                     'OJIP_FvFm', 'OJIP_PIabs']
@@ -190,8 +190,8 @@ def analyze_variety_overlap(df):
     print("6. 品种间特征重叠分析")
     print("=" * 60)
 
-    band_cols = ['R460', 'R520', 'R580', 'R660', 'R710', 'R730',
-                 'R760', 'R780', 'R810', 'R850', 'R900']
+    band_cols = ['R460', 'R520', 'R590', 'R660', 'R680', 'R710',
+                 'R730', 'R780', 'R820', 'R850', 'R910']
 
     # 计算品种质心
     variety_centroids = df.groupby('Variety')[band_cols].mean()
@@ -243,8 +243,8 @@ def diagnose_difficult_varieties(df):
 
     difficult_varieties = [1252, 1235, 1099]
 
-    band_cols = ['R460', 'R520', 'R580', 'R660', 'R710', 'R730',
-                 'R760', 'R780', 'R810', 'R850', 'R900']
+    band_cols = ['R460', 'R520', 'R590', 'R660', 'R680', 'R710',
+                 'R730', 'R780', 'R820', 'R850', 'R910']
 
     # 全局统计
     global_mean = df[band_cols].mean()

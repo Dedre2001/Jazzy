@@ -38,8 +38,8 @@ def create_full_adjusted_data():
     variety_stats['is_any_extreme'] = variety_stats['is_label_extreme'] | variety_stats['is_spectral_extreme']
 
     # 用完全正常的品种训练模型
-    band_cols = ['R460', 'R520', 'R580', 'R660', 'R710', 'R730',
-                 'R760', 'R780', 'R810', 'R850', 'R900']
+    band_cols = ['R460', 'R520', 'R590', 'R660', 'R680', 'R710',
+                 'R730', 'R780', 'R820', 'R850', 'R910']
 
     variety_spectra = df.groupby('Variety')[band_cols].mean()
     variety_spectra['D_conv'] = df.groupby('Variety')['D_conv'].first()

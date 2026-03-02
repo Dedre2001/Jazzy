@@ -92,8 +92,8 @@ def estimate_expected_labels(df, variety_stats):
     print("估算极端品种的'合理'标签")
     print("=" * 60)
 
-    band_cols = ['R460', 'R520', 'R580', 'R660', 'R710', 'R730',
-                 'R760', 'R780', 'R810', 'R850', 'R900']
+    band_cols = ['R460', 'R520', 'R590', 'R660', 'R680', 'R710',
+                 'R730', 'R780', 'R820', 'R850', 'R910']
 
     # 品种级光谱均值
     variety_spectra = df.groupby('Variety')[band_cols].mean()
